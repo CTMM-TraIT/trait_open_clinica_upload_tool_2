@@ -96,14 +96,15 @@ using System.Security.AccessControl;
 4.4.2     01-05-2014      Ignore input line if it is completely
                           empty                               C. Parlayan
 4.4.2     05-05-2014      prevent duplicate inserts           C.Parlayan
-                            
+ 
+4.4.3     13-08-2015      Addition of the oc:status attribute J. Rousseau
 *******************************************************************************************/
 namespace OCDataImporter
 {    
     public partial class Form1 : Form, IViewUpdater
     {
         
-        public const String VERSION_LABEL = "OCDataImporter Version 4.4.2";   
+        public const String VERSION_LABEL = "OCDataImporter Version 4.4.3_SNAPSHOT";   
         
         // public const bool DEBUGMODE = true;
         public const bool DEBUGMODE = false;
@@ -371,7 +372,7 @@ namespace OCDataImporter
 
         void MenuHelpAboutOnClick(object obj, EventArgs ea)
         {
-            MessageBox.Show(VERSION_LABEL + " - Made by: C. Parlayan/J. Rousseau, VU Medical Center, Amsterdam, The Netherlands - 2010-2014", Text);
+            MessageBox.Show(VERSION_LABEL + " - Made by: C. Parlayan/J. Rousseau, VU Medical Center, Amsterdam, The Netherlands - 2010-2015", Text);
         }        
 
         public void FillTheParams()
@@ -605,6 +606,12 @@ namespace OCDataImporter
             conversionSettings.defaultSubjectSex = comboBoxSex.SelectedItem.ToString();
             conversionSettings.outFMaxLines = System.Convert.ToInt32(textBoxMaxLines.Text);
             conversionSettings.selectedStudyEvent = comboBoxSE.SelectedItem.ToString();
+            conversionSettings.useStatusAfterUpload = cbStatusAfterUpload.Checked;
+            conversionSettings.useUploadOn = cbUploadOn.Checked;                        
+            
+            conversionSettings.uploadOnNotStarted = cbNotStarted.Checked;
+            conversionSettings.uploadOnDataEntryStarted = cbDataEntryStarted.Checked;
+            conversionSettings.uploadOnDataEntryComplete = cbDataEntryComplete.Checked;
 
             dumpTheGrid();
             Converter converter = new Converter(conversionSettings, studyMetaDataValidator, warningLog, this, labelOCoidExists, LabelOID);
@@ -1392,6 +1399,13 @@ namespace OCDataImporter
             label14.ForeColor = System.Drawing.Color.LightGray;
             groupBox1.ForeColor = System.Drawing.Color.LightGray;
             checkBoxDup.ForeColor = System.Drawing.Color.LightGray;
+            cbUploadOn.Enabled = false;
+            cbNotStarted.Enabled = false;
+            cbDataEntryStarted.Enabled = false;
+            cbDataEntryComplete.Enabled = false;
+            cbStatusAfterUpload.Enabled = false;
+            rbStatusMarkedComplete.Enabled = false;
+            rbStatusDataEntryStarted.Enabled = false;
         }
 
 
@@ -1420,6 +1434,13 @@ namespace OCDataImporter
             label14.ForeColor = System.Drawing.Color.Black;
             groupBox1.ForeColor = System.Drawing.Color.Black;
             checkBoxDup.ForeColor = System.Drawing.Color.Black;
+            cbUploadOn.Enabled = true;
+            cbNotStarted.Enabled = cbUploadOn.Checked;
+            cbDataEntryStarted.Enabled = cbUploadOn.Checked;
+            cbDataEntryComplete.Enabled = cbUploadOn.Checked;
+            cbStatusAfterUpload.Enabled = true;
+            rbStatusMarkedComplete.Enabled = cbStatusAfterUpload.Checked;
+            rbStatusDataEntryStarted.Enabled = cbStatusAfterUpload.Checked;
         }
 
         private void StateReadFiles(bool begin)
@@ -1549,6 +1570,40 @@ namespace OCDataImporter
                     dataGridView1.Columns[DGIndexOfSTD].Visible = true;
                 }
             }
+        }
+        
+
+        private void onCheckChangedStatusAfterUpload(object sender, EventArgs e)
+        {
+            rbStatusMarkedComplete.Enabled = cbStatusAfterUpload.Checked;
+            rbStatusDataEntryStarted.Enabled = cbStatusAfterUpload.Checked;
+        }
+
+        private void onClickDataEntryStartedStatus(object sender, EventArgs e)
+        {
+            if (rbStatusDataEntryStarted.Checked)
+            {
+                conversionSettings.statusAfterUpload = StatusAfterUpload.DATA_ENTRY_STARTED;
+            }
+            else
+            {
+                if (rbStatusMarkedComplete.Checked)
+                {
+                    conversionSettings.statusAfterUpload = StatusAfterUpload.MARKED_COMPLETE;
+                }
+            }
+        }
+
+        private void onCheckChangedUploadWhen(object sender, EventArgs e)
+        {
+            cbNotStarted.Enabled = cbUploadOn.Checked;
+            cbDataEntryStarted.Enabled = cbUploadOn.Checked;
+            cbDataEntryComplete.Enabled = cbUploadOn.Checked;
+        }
+
+        private void statusAfterUpload_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -6,6 +6,13 @@ using System.Windows.Forms;
 
 namespace OCDataImporter
 {
+
+    public enum StatusAfterUpload
+    { 
+        MARKED_COMPLETE,
+        DATA_ENTRY_STARTED
+    }
+    
     class ConversionSettings
     {
         public String dateFormat { get; set; }
@@ -23,9 +30,15 @@ namespace OCDataImporter
 
         public bool useTodaysDateIfNoEventDate { get; set; }
         public bool checkForDuplicateSubjects { get; set; }
+        public bool useStatusAfterUpload { get; set; }
+        public bool useUploadOn { get; set; }
+        public bool uploadOnNotStarted { get; set; }
+        public bool uploadOnDataEntryStarted { get; set; }
+        public bool uploadOnDataEntryComplete { get; set; }
 
         public int sepCount { get; set; }
         public int outFMaxLines { get; set; }
+        public StatusAfterUpload statusAfterUpload { get; set; }
 
         public ArrayList Groups { get; set; }
         public ArrayList Forms { get; set; }
@@ -37,6 +50,8 @@ namespace OCDataImporter
             pathToMetaDataFile = "";
             pathToInputFile = "";
             checkForDuplicateSubjects = false;
+            useStatusAfterUpload = false;
+            useUploadOn = false;
         }
 
         

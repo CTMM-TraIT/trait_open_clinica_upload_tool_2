@@ -256,8 +256,9 @@ namespace OCDataImporter
                     
                     string theXMLForm = "";
                     odmOutputFile.Append("    <SubjectData SubjectKey=\"" + SStheKEY + "\">");
-                    theXMLEvent += "        <StudyEventData StudyEventOID=\"" + theWrittenSE + "\" StudyEventRepeatKey=\"" + CheckRepeatKey(theSERK, linecount) + "\">" + LINE_SEPARATOR;
+                    theXMLEvent += "        <StudyEventData StudyEventOID=\"" + theWrittenSE + "\" StudyEventRepeatKey=\"" + CheckRepeatKey(theSERK, linecount) + "\">" + LINE_SEPARATOR;                    
                     theXMLForm += "            <FormData FormOID=\"" + TheFormOID + "\">" + LINE_SEPARATOR;
+                    theXMLForm = insertEventStatusAfterUpload(theXMLForm);
                     if (theGRRK == "NOT") theXMLForm += "                <ItemGroupData ItemGroupOID=\"" + theWrittenGR + "\" TransactionType=\"Insert\" >" + LINE_SEPARATOR;
                     else theXMLForm += "                <ItemGroupData ItemGroupOID=\"" + theWrittenGR + "\" ItemGroupRepeatKey=\"" + CheckRepeatKey(theGRRK, linecount) + "\" TransactionType=\"Insert\" >" + LINE_SEPARATOR;
                     int indexOfItem = 0;
@@ -344,6 +345,7 @@ namespace OCDataImporter
                                 }
                                 theXMLForm = "";
                                 theXMLForm += "            <FormData FormOID=\"" + TheFormOID + "\">" + LINE_SEPARATOR;
+                                theXMLForm = insertEventStatusAfterUpload(theXMLForm);
                                 if (TheItemGroupDef.Contains("*"))
                                 {
                                     string[] pp = TheItemGroupDef.Split('*');
@@ -409,9 +411,11 @@ namespace OCDataImporter
                                     if (event_index_row != -1) theSERK = split[event_index_row];
                                     else theSERK = Utilities.Get_SE_RepeatingKey_FromStudyDataColumn(theStudyDataColumn);
                                 }
-                                theXMLEvent += "        <StudyEventData StudyEventOID=\"" + theWrittenSE + "\" StudyEventRepeatKey=\"" + CheckRepeatKey(theSERK, linecount) + "\">" + LINE_SEPARATOR;
+                                theXMLEvent += "        <StudyEventData StudyEventOID=\"" + theWrittenSE + "\" StudyEventRepeatKey=\"" + CheckRepeatKey(theSERK, linecount) + "\">" + LINE_SEPARATOR;                                
+                                
                                 TheFormOID = nwdingen[1];
                                 theXMLForm += "            <FormData FormOID=\"" + TheFormOID + "\">" + LINE_SEPARATOR;
+                                theXMLForm = insertEventStatusAfterUpload(theXMLForm);
                                 TheItemGroupDef = nwdingen[2];
                                 if (TheItemGroupDef.Contains("*"))
                                 {
@@ -653,7 +657,30 @@ namespace OCDataImporter
                 odmOutputFile.Close();
             }
         }
-       
+
+        private string insertEventStatusAfterUpload(string xmlOutput)
+        {            
+            string ret = xmlOutput;
+            if (conversionSettings.useStatusAfterUpload) {
+                String statusAfterUpload = conversionSettings.statusAfterUpload.Equals(StatusAfterUpload.MARKED_COMPLETE) ? "Marked_Complete" : "initial data entry";
+                
+                int positionTrailingChevron = xmlOutput.LastIndexOf('>');
+                ret = xmlOutput.Substring(0, positionTrailingChevron);
+                ret += " OpenClinica:Status=\"" + statusAfterUpload + "\">" + LINE_SEPARATOR; 
+            }
+            return ret;
+        }
+
+        private string createUpsertOnOutput()
+        {                        
+            if (conversionSettings.useUploadOn)
+            {               
+                return "    <UpsertOn NotStarted=\"" + conversionSettings.uploadOnNotStarted.ToString().ToLower() + "\" " +
+                                     "DataEntryStarted=\"" + conversionSettings.uploadOnDataEntryStarted.ToString().ToLower() + "\" " +
+                                     "DataEntryComplete=\"" + conversionSettings.uploadOnDataEntryComplete.ToString().ToLower() + "\"/> " + LINE_SEPARATOR;
+            }
+            return "";
+        }
 
         public void check_index_of_item(int linecount, int myioi)
         {
@@ -673,10 +700,15 @@ namespace OCDataImporter
             outputFile.Append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
             outputFile.Append("<ODM xmlns=\"http://www.cdisc.org/ns/odm/v1.3\"");
             outputFile.Append("xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
+            outputFile.Append("xmlns:OpenClinica=\"http://www.openclinica.org/ns/odm_ext_v130/v3.1\"");
             outputFile.Append("xsi:schemaLocation=\"http://www.cdisc.org/ns/odm/v1.3 ODM1-3.xsd\"");
             outputFile.Append("ODMVersion=\"1.3\" FileOID=\"1D20080412202420\" FileType=\"Snapshot\"");
             outputFile.Append("Description=\"Dataset ODM\" CreationDateTime=\"" + timeStamp + "\" >");
             outputFile.Append("<ClinicalData StudyOID=\"" + conversionSettings.studyOID + "\" MetaDataVersionOID=\"v1.0.0\">");
+            String upsertOn = createUpsertOnOutput();
+            if (! String.IsNullOrEmpty(upsertOn)) {
+                outputFile.Append(upsertOn);
+            }
         }
 
         private void masterClose(OutputFile outputFile)

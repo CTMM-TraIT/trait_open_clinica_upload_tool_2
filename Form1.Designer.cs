@@ -86,8 +86,19 @@
             this.buttonBackToBegin = new System.Windows.Forms.Button();
             this.linkbuttonSHCols = new System.Windows.Forms.LinkLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.cbUploadOn = new System.Windows.Forms.CheckBox();
+            this.cbStatusAfterUpload = new System.Windows.Forms.CheckBox();
+            this.cbNotStarted = new System.Windows.Forms.CheckBox();
+            this.cbDataEntryStarted = new System.Windows.Forms.CheckBox();
+            this.cbDataEntryComplete = new System.Windows.Forms.CheckBox();
+            this.statusAfterUpload = new System.Windows.Forms.GroupBox();
+            this.rbStatusMarkedComplete = new System.Windows.Forms.RadioButton();
+            this.rbStatusDataEntryStarted = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.statusAfterUpload.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxSE
@@ -291,9 +302,9 @@
             this.DGDOB,
             this.DGSTD,
             this.CopyCurrentTarget});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 196);
+            this.dataGridView1.Location = new System.Drawing.Point(18, 257);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1203, 338);
+            this.dataGridView1.Size = new System.Drawing.Size(1203, 284);
             this.dataGridView1.TabIndex = 13;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -597,7 +608,7 @@
             // 
             // buttonConfPars
             // 
-            this.buttonConfPars.Location = new System.Drawing.Point(18, 157);
+            this.buttonConfPars.Location = new System.Drawing.Point(907, 211);
             this.buttonConfPars.Name = "buttonConfPars";
             this.buttonConfPars.Size = new System.Drawing.Size(224, 23);
             this.buttonConfPars.TabIndex = 97;
@@ -626,11 +637,115 @@
             this.linkbuttonSHCols.Text = "Hide Subject Related Columns";
             this.linkbuttonSHCols.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkbuttonSHCols_LinkClicked);
             // 
+            // cbUploadOn
+            // 
+            this.cbUploadOn.AutoSize = true;
+            this.cbUploadOn.Location = new System.Drawing.Point(18, 189);
+            this.cbUploadOn.Name = "cbUploadOn";
+            this.cbUploadOn.Size = new System.Drawing.Size(101, 17);
+            this.cbUploadOn.TabIndex = 100;
+            this.cbUploadOn.Text = "Upload When";
+            this.cbUploadOn.UseVisualStyleBackColor = true;
+            this.cbUploadOn.CheckedChanged += new System.EventHandler(this.onCheckChangedUploadWhen);
+            // 
+            // cbStatusAfterUpload
+            // 
+            this.cbStatusAfterUpload.AutoSize = true;
+            this.cbStatusAfterUpload.Location = new System.Drawing.Point(16, 12);
+            this.cbStatusAfterUpload.Name = "cbStatusAfterUpload";
+            this.cbStatusAfterUpload.Size = new System.Drawing.Size(135, 17);
+            this.cbStatusAfterUpload.TabIndex = 104;
+            this.cbStatusAfterUpload.Text = "Status after upload";
+            this.cbStatusAfterUpload.UseVisualStyleBackColor = true;
+            this.cbStatusAfterUpload.CheckedChanged += new System.EventHandler(this.onCheckChangedStatusAfterUpload);
+            // 
+            // cbNotStarted
+            // 
+            this.cbNotStarted.AutoSize = true;
+            this.cbNotStarted.Location = new System.Drawing.Point(125, 189);
+            this.cbNotStarted.Name = "cbNotStarted";
+            this.cbNotStarted.Size = new System.Drawing.Size(91, 17);
+            this.cbNotStarted.TabIndex = 101;
+            this.cbNotStarted.Text = "Not Started";
+            this.cbNotStarted.UseVisualStyleBackColor = true;
+            // 
+            // cbDataEntryStarted
+            // 
+            this.cbDataEntryStarted.AutoSize = true;
+            this.cbDataEntryStarted.Location = new System.Drawing.Point(125, 211);
+            this.cbDataEntryStarted.Name = "cbDataEntryStarted";
+            this.cbDataEntryStarted.Size = new System.Drawing.Size(133, 17);
+            this.cbDataEntryStarted.TabIndex = 102;
+            this.cbDataEntryStarted.Text = "Data Entry Started";
+            this.cbDataEntryStarted.UseVisualStyleBackColor = true;
+            // 
+            // cbDataEntryComplete
+            // 
+            this.cbDataEntryComplete.AutoSize = true;
+            this.cbDataEntryComplete.Location = new System.Drawing.Point(125, 234);
+            this.cbDataEntryComplete.Name = "cbDataEntryComplete";
+            this.cbDataEntryComplete.Size = new System.Drawing.Size(146, 17);
+            this.cbDataEntryComplete.TabIndex = 109;
+            this.cbDataEntryComplete.Text = "Data Entry Complete";
+            this.cbDataEntryComplete.UseVisualStyleBackColor = true;
+            // 
+            // statusAfterUpload
+            // 
+            this.statusAfterUpload.Controls.Add(this.rbStatusMarkedComplete);
+            this.statusAfterUpload.Controls.Add(this.rbStatusDataEntryStarted);
+            this.statusAfterUpload.Location = new System.Drawing.Point(157, 3);
+            this.statusAfterUpload.Name = "statusAfterUpload";
+            this.statusAfterUpload.Size = new System.Drawing.Size(147, 54);
+            this.statusAfterUpload.TabIndex = 110;
+            this.statusAfterUpload.TabStop = false;
+            this.statusAfterUpload.Enter += new System.EventHandler(this.statusAfterUpload_Enter);
+            // 
+            // rbStatusMarkedComplete
+            // 
+            this.rbStatusMarkedComplete.AutoSize = true;
+            this.rbStatusMarkedComplete.Enabled = false;
+            this.rbStatusMarkedComplete.Location = new System.Drawing.Point(13, 28);
+            this.rbStatusMarkedComplete.Name = "rbStatusMarkedComplete";
+            this.rbStatusMarkedComplete.Size = new System.Drawing.Size(126, 17);
+            this.rbStatusMarkedComplete.TabIndex = 1;
+            this.rbStatusMarkedComplete.Tag = "1";
+            this.rbStatusMarkedComplete.Text = "Marked Complete";
+            this.rbStatusMarkedComplete.UseVisualStyleBackColor = true;
+            // 
+            // rbStatusDataEntryStarted
+            // 
+            this.rbStatusDataEntryStarted.AutoSize = true;
+            this.rbStatusDataEntryStarted.Checked = true;
+            this.rbStatusDataEntryStarted.Enabled = false;
+            this.rbStatusDataEntryStarted.Location = new System.Drawing.Point(13, 9);
+            this.rbStatusDataEntryStarted.Name = "rbStatusDataEntryStarted";
+            this.rbStatusDataEntryStarted.Size = new System.Drawing.Size(120, 17);
+            this.rbStatusDataEntryStarted.TabIndex = 0;
+            this.rbStatusDataEntryStarted.TabStop = true;
+            this.rbStatusDataEntryStarted.Tag = "0";
+            this.rbStatusDataEntryStarted.Text = "Initial data entry";
+            this.rbStatusDataEntryStarted.UseVisualStyleBackColor = true;
+            this.rbStatusDataEntryStarted.Click += new System.EventHandler(this.onClickDataEntryStartedStatus);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.statusAfterUpload);
+            this.panel1.Controls.Add(this.cbStatusAfterUpload);
+            this.panel1.Location = new System.Drawing.Point(287, 177);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(314, 74);
+            this.panel1.TabIndex = 111;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1247, 750);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.cbDataEntryComplete);
+            this.Controls.Add(this.cbDataEntryStarted);
+            this.Controls.Add(this.cbNotStarted);
+            this.Controls.Add(this.cbUploadOn);
             this.Controls.Add(this.linkbuttonSHCols);
             this.Controls.Add(this.buttonBackToBegin);
             this.Controls.Add(this.buttonConfPars);
@@ -682,6 +797,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.statusAfterUpload.ResumeLayout(false);
+            this.statusAfterUpload.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -744,6 +863,15 @@
         private System.Windows.Forms.DataGridViewLinkColumn CopyCurrentTarget;
         private System.Windows.Forms.LinkLabel linkbuttonSHCols;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.CheckBox cbUploadOn;
+        private System.Windows.Forms.CheckBox cbStatusAfterUpload;
+        private System.Windows.Forms.CheckBox cbNotStarted;
+        private System.Windows.Forms.CheckBox cbDataEntryStarted;
+        private System.Windows.Forms.CheckBox cbDataEntryComplete;
+        private System.Windows.Forms.GroupBox statusAfterUpload;
+        private System.Windows.Forms.RadioButton rbStatusMarkedComplete;
+        private System.Windows.Forms.RadioButton rbStatusDataEntryStarted;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

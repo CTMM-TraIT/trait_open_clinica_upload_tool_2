@@ -87,18 +87,18 @@
             this.linkbuttonSHCols = new System.Windows.Forms.LinkLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.cbUploadOn = new System.Windows.Forms.CheckBox();
-            this.cbStatusAfterUpload = new System.Windows.Forms.CheckBox();
             this.cbNotStarted = new System.Windows.Forms.CheckBox();
             this.cbDataEntryStarted = new System.Windows.Forms.CheckBox();
             this.cbDataEntryComplete = new System.Windows.Forms.CheckBox();
-            this.statusAfterUpload = new System.Windows.Forms.GroupBox();
-            this.rbStatusMarkedComplete = new System.Windows.Forms.RadioButton();
-            this.rbStatusDataEntryStarted = new System.Windows.Forms.RadioButton();
+            this.cbStatusAfterUpload = new System.Windows.Forms.CheckBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.rbStatusDataEntryStarted = new System.Windows.Forms.RadioButton();
+            this.rbStatusMarkedComplete = new System.Windows.Forms.RadioButton();
+            this.statusAfterUpload = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.statusAfterUpload.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.statusAfterUpload.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxSE
@@ -637,16 +637,55 @@
             this.linkbuttonSHCols.Text = "Hide Subject Related Columns";
             this.linkbuttonSHCols.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkbuttonSHCols_LinkClicked);
             // 
+            // toolTip1
+            // 
+            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            // 
             // cbUploadOn
             // 
             this.cbUploadOn.AutoSize = true;
-            this.cbUploadOn.Location = new System.Drawing.Point(18, 189);
+            this.cbUploadOn.Image = ((System.Drawing.Image)(resources.GetObject("cbUploadOn.Image")));
+            this.cbUploadOn.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.cbUploadOn.Location = new System.Drawing.Point(37, 190);
             this.cbUploadOn.Name = "cbUploadOn";
-            this.cbUploadOn.Size = new System.Drawing.Size(101, 17);
+            this.cbUploadOn.Size = new System.Drawing.Size(125, 17);
             this.cbUploadOn.TabIndex = 100;
-            this.cbUploadOn.Text = "Upload When";
+            this.cbUploadOn.Text = "Upload When      ";
+            this.toolTip1.SetToolTip(this.cbUploadOn, "Hallo This is the Help\r\nText. It contains multiple lines to increase readablility" +
+        ".\r\n\r\nHallo and good-bye");
             this.cbUploadOn.UseVisualStyleBackColor = true;
             this.cbUploadOn.CheckedChanged += new System.EventHandler(this.onCheckChangedUploadWhen);
+            // 
+            // cbNotStarted
+            // 
+            this.cbNotStarted.AutoSize = true;
+            this.cbNotStarted.Location = new System.Drawing.Point(172, 190);
+            this.cbNotStarted.Name = "cbNotStarted";
+            this.cbNotStarted.Size = new System.Drawing.Size(91, 17);
+            this.cbNotStarted.TabIndex = 101;
+            this.cbNotStarted.Text = "Not Started";
+            this.cbNotStarted.UseVisualStyleBackColor = true;
+            // 
+            // cbDataEntryStarted
+            // 
+            this.cbDataEntryStarted.AutoSize = true;
+            this.cbDataEntryStarted.Location = new System.Drawing.Point(172, 212);
+            this.cbDataEntryStarted.Name = "cbDataEntryStarted";
+            this.cbDataEntryStarted.Size = new System.Drawing.Size(133, 17);
+            this.cbDataEntryStarted.TabIndex = 102;
+            this.cbDataEntryStarted.Text = "Data Entry Started";
+            this.cbDataEntryStarted.UseVisualStyleBackColor = true;
+            // 
+            // cbDataEntryComplete
+            // 
+            this.cbDataEntryComplete.AutoSize = true;
+            this.cbDataEntryComplete.Location = new System.Drawing.Point(172, 235);
+            this.cbDataEntryComplete.Name = "cbDataEntryComplete";
+            this.cbDataEntryComplete.Size = new System.Drawing.Size(146, 17);
+            this.cbDataEntryComplete.TabIndex = 109;
+            this.cbDataEntryComplete.Text = "Data Entry Complete";
+            this.cbDataEntryComplete.UseVisualStyleBackColor = true;
+            this.cbDataEntryComplete.CheckedChanged += new System.EventHandler(this.onDataEntryCompleteToggled);
             // 
             // cbStatusAfterUpload
             // 
@@ -659,46 +698,29 @@
             this.cbStatusAfterUpload.UseVisualStyleBackColor = true;
             this.cbStatusAfterUpload.CheckedChanged += new System.EventHandler(this.onCheckChangedStatusAfterUpload);
             // 
-            // cbNotStarted
+            // panel1
             // 
-            this.cbNotStarted.AutoSize = true;
-            this.cbNotStarted.Location = new System.Drawing.Point(125, 189);
-            this.cbNotStarted.Name = "cbNotStarted";
-            this.cbNotStarted.Size = new System.Drawing.Size(91, 17);
-            this.cbNotStarted.TabIndex = 101;
-            this.cbNotStarted.Text = "Not Started";
-            this.cbNotStarted.UseVisualStyleBackColor = true;
+            this.panel1.Controls.Add(this.statusAfterUpload);
+            this.panel1.Controls.Add(this.cbStatusAfterUpload);
+            this.panel1.Location = new System.Drawing.Point(324, 178);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(430, 74);
+            this.panel1.TabIndex = 111;
             // 
-            // cbDataEntryStarted
+            // rbStatusDataEntryStarted
             // 
-            this.cbDataEntryStarted.AutoSize = true;
-            this.cbDataEntryStarted.Location = new System.Drawing.Point(125, 211);
-            this.cbDataEntryStarted.Name = "cbDataEntryStarted";
-            this.cbDataEntryStarted.Size = new System.Drawing.Size(133, 17);
-            this.cbDataEntryStarted.TabIndex = 102;
-            this.cbDataEntryStarted.Text = "Data Entry Started";
-            this.cbDataEntryStarted.UseVisualStyleBackColor = true;
-            // 
-            // cbDataEntryComplete
-            // 
-            this.cbDataEntryComplete.AutoSize = true;
-            this.cbDataEntryComplete.Location = new System.Drawing.Point(125, 234);
-            this.cbDataEntryComplete.Name = "cbDataEntryComplete";
-            this.cbDataEntryComplete.Size = new System.Drawing.Size(146, 17);
-            this.cbDataEntryComplete.TabIndex = 109;
-            this.cbDataEntryComplete.Text = "Data Entry Complete";
-            this.cbDataEntryComplete.UseVisualStyleBackColor = true;
-            // 
-            // statusAfterUpload
-            // 
-            this.statusAfterUpload.Controls.Add(this.rbStatusMarkedComplete);
-            this.statusAfterUpload.Controls.Add(this.rbStatusDataEntryStarted);
-            this.statusAfterUpload.Location = new System.Drawing.Point(157, 3);
-            this.statusAfterUpload.Name = "statusAfterUpload";
-            this.statusAfterUpload.Size = new System.Drawing.Size(147, 54);
-            this.statusAfterUpload.TabIndex = 110;
-            this.statusAfterUpload.TabStop = false;
-            this.statusAfterUpload.Enter += new System.EventHandler(this.statusAfterUpload_Enter);
+            this.rbStatusDataEntryStarted.AutoSize = true;
+            this.rbStatusDataEntryStarted.Checked = true;
+            this.rbStatusDataEntryStarted.Enabled = false;
+            this.rbStatusDataEntryStarted.Location = new System.Drawing.Point(13, 9);
+            this.rbStatusDataEntryStarted.Name = "rbStatusDataEntryStarted";
+            this.rbStatusDataEntryStarted.Size = new System.Drawing.Size(241, 17);
+            this.rbStatusDataEntryStarted.TabIndex = 0;
+            this.rbStatusDataEntryStarted.TabStop = true;
+            this.rbStatusDataEntryStarted.Tag = "0";
+            this.rbStatusDataEntryStarted.Text = "Initial data entry (Data entry Started)";
+            this.rbStatusDataEntryStarted.UseVisualStyleBackColor = true;
+            this.rbStatusDataEntryStarted.Click += new System.EventHandler(this.onClickDataEntryStartedStatus);
             // 
             // rbStatusMarkedComplete
             // 
@@ -712,29 +734,16 @@
             this.rbStatusMarkedComplete.Text = "Marked Complete";
             this.rbStatusMarkedComplete.UseVisualStyleBackColor = true;
             // 
-            // rbStatusDataEntryStarted
+            // statusAfterUpload
             // 
-            this.rbStatusDataEntryStarted.AutoSize = true;
-            this.rbStatusDataEntryStarted.Checked = true;
-            this.rbStatusDataEntryStarted.Enabled = false;
-            this.rbStatusDataEntryStarted.Location = new System.Drawing.Point(13, 9);
-            this.rbStatusDataEntryStarted.Name = "rbStatusDataEntryStarted";
-            this.rbStatusDataEntryStarted.Size = new System.Drawing.Size(120, 17);
-            this.rbStatusDataEntryStarted.TabIndex = 0;
-            this.rbStatusDataEntryStarted.TabStop = true;
-            this.rbStatusDataEntryStarted.Tag = "0";
-            this.rbStatusDataEntryStarted.Text = "Initial data entry";
-            this.rbStatusDataEntryStarted.UseVisualStyleBackColor = true;
-            this.rbStatusDataEntryStarted.Click += new System.EventHandler(this.onClickDataEntryStartedStatus);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.statusAfterUpload);
-            this.panel1.Controls.Add(this.cbStatusAfterUpload);
-            this.panel1.Location = new System.Drawing.Point(287, 177);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(314, 74);
-            this.panel1.TabIndex = 111;
+            this.statusAfterUpload.Controls.Add(this.rbStatusMarkedComplete);
+            this.statusAfterUpload.Controls.Add(this.rbStatusDataEntryStarted);
+            this.statusAfterUpload.Location = new System.Drawing.Point(157, 3);
+            this.statusAfterUpload.Name = "statusAfterUpload";
+            this.statusAfterUpload.Size = new System.Drawing.Size(259, 54);
+            this.statusAfterUpload.TabIndex = 110;
+            this.statusAfterUpload.TabStop = false;
+            this.statusAfterUpload.Enter += new System.EventHandler(this.statusAfterUpload_Enter);
             // 
             // Form1
             // 
@@ -794,13 +803,14 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "OCDataImporter - Provided by VU Medical Center, dept. of Pathology, Amsterdam";
+            this.toolTip1.SetToolTip(this, "asdfasdfasfsadfa");
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.statusAfterUpload.ResumeLayout(false);
-            this.statusAfterUpload.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.statusAfterUpload.ResumeLayout(false);
+            this.statusAfterUpload.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -864,14 +874,14 @@
         private System.Windows.Forms.LinkLabel linkbuttonSHCols;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.CheckBox cbUploadOn;
-        private System.Windows.Forms.CheckBox cbStatusAfterUpload;
         private System.Windows.Forms.CheckBox cbNotStarted;
         private System.Windows.Forms.CheckBox cbDataEntryStarted;
         private System.Windows.Forms.CheckBox cbDataEntryComplete;
+        private System.Windows.Forms.CheckBox cbStatusAfterUpload;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox statusAfterUpload;
         private System.Windows.Forms.RadioButton rbStatusMarkedComplete;
         private System.Windows.Forms.RadioButton rbStatusDataEntryStarted;
-        private System.Windows.Forms.Panel panel1;
     }
 }
 

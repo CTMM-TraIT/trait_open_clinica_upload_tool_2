@@ -1605,5 +1605,20 @@ namespace OCDataImporter
         {
 
         }
+
+        private void onDataEntryCompleteToggled(object sender, EventArgs e)
+        {
+            Boolean isChecked = cbDataEntryComplete.Checked;
+            if (isChecked)
+            {
+                String message = "Selecting this option means that data will be overwritten for CRF's with the status 'Completed'.  CRF status 'Completed' can not be reverted after upload to 'Data Entry Started'.";
+                MessageBox.Show(message, "OCDataImporter - warning", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
     }
 }

@@ -104,7 +104,7 @@ namespace OCDataImporter
     public partial class Form1 : Form, IViewUpdater
     {
         
-        public const String VERSION_LABEL = "OCDataImporter Version 4.4.3_SNAPSHOT";   
+        public const String VERSION_LABEL = "OCDataImporter Version 4.4.3Z_SNAPSHOT";   
         
         // public const bool DEBUGMODE = true;
         public const bool DEBUGMODE = false;

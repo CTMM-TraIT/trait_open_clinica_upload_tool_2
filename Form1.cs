@@ -402,6 +402,13 @@ namespace OCDataImporter
                             textBoxSubjectSexF.Text = split[3];
                             textBoxMaxLines.Text = split[4];
                             textBoxLocation.Text = split[5];
+                            rbStatusMarkedComplete.Checked = Boolean.Parse(split[6]);
+                            rbStatusDataEntryStarted.Checked = Boolean.Parse(split[7]);
+                            cbUploadOn.Checked = Boolean.Parse(split[8]);
+                            cbStatusAfterUpload.Checked = Boolean.Parse(split[9]);
+                            cbNotStarted.Checked = Boolean.Parse(split[10]);
+                            cbDataEntryStarted.Checked = Boolean.Parse(split[11]);
+                            cbDataEntryComplete.Checked = Boolean.Parse(split[12]);
                             first = false;
                         }
                     }
@@ -471,7 +478,16 @@ namespace OCDataImporter
                 }
                 using (StreamWriter outPR = new StreamWriter(dmpprm))
                 {
-                    outPR.WriteLine(comboBoxDateFormat.SelectedItem + "~" + comboBoxSex.SelectedItem + "~" + textBoxSubjectSexM.Text + "~" + textBoxSubjectSexF.Text + "~" + textBoxMaxLines.Text + "~" + textBoxLocation.Text + "~");
+                    // TODO change this to a serialized version.
+                    outPR.WriteLine(comboBoxDateFormat.SelectedItem + "~" + comboBoxSex.SelectedItem + "~" + textBoxSubjectSexM.Text + "~" 
+                                    + textBoxSubjectSexF.Text + "~" + textBoxMaxLines.Text + "~" + textBoxLocation.Text + "~"
+                                    + rbStatusMarkedComplete.Checked + "~"
+                                    + rbStatusDataEntryStarted.Checked + "~"
+                                    + cbUploadOn.Checked + "~"
+                                    + cbStatusAfterUpload.Checked + "~"
+                                    + cbNotStarted.Checked + "~"
+                                    + cbDataEntryStarted.Checked + "~"
+                                    + cbDataEntryComplete.Checked+ "~");
                 }
             }
             catch (Exception ex)
@@ -1618,7 +1634,7 @@ namespace OCDataImporter
             Boolean isChecked = cbDataEntryComplete.Checked;
             if (isChecked)
             {
-                String message = "Selecting this option means that data will be overwritten for CRF's with the status 'Completed'.  CRF status 'Completed' can not be reverted after upload to 'Data Entry Started'.";
+                String message = "Selecting the option 'Data Entry Complete' for Upsert On means that data will be overwritten for CRF's with the status 'Completed'.  CRF status 'Completed' can not be reverted after upload to 'Data Entry Started'.";
                 MessageBox.Show(message, "OCDataImporter - warning", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }

@@ -108,6 +108,7 @@ namespace OCDataImporter
         
         // public const bool DEBUGMODE = true;
         public const bool DEBUGMODE = false;
+
         
         public bool labelOCoidExists = false; // 2.1.1 If labelOCoid file exists, get the oid from that file, instead of 'SS_label'...
         public string dmpfilename = "";
@@ -161,7 +162,7 @@ namespace OCDataImporter
         private DataGrid dataGrid;
         private StudyMetaDataValidator studyMetaDataValidator;
         private ConversionSettings conversionSettings;
-        private WarningLog warningLog;
+        private WarningLog warningLog;        
         
         public Form1()
         {
@@ -209,8 +210,8 @@ namespace OCDataImporter
             }
             catch (Exception exx)
             {
-                MessageBox.Show("Problem opening user manual. Message = " + exx.Message, "OCDataImporter", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+                MessageBox.Show("Problem opening user manual. Message = " + exx.Message, "OCDataImporter", MessageBoxButtons.OK, MessageBoxIcon.Warning);                
+            }            
             conversionSettings.workdir = Directory.GetCurrentDirectory();
             StateReadFiles(true);
         }
@@ -355,19 +356,25 @@ namespace OCDataImporter
             safeClose(fpipdf);            
             Close();
         }
+        
         void MenuHelpHowToOnClick(object obj, EventArgs ea)
         {
+            if (fpipdf == null)
+            {
+                MessageBox.Show("Help PDF-file is not present", "OCDataImporter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            Process myProcess = new Process();
+            myProcess.StartInfo.FileName = fpipdf.Name;
             try
             {
-                Process myProcess = new Process();
-                myProcess.StartInfo.FileName = "acrord32.exe";
-                myProcess.StartInfo.Arguments += '"' + fpipdf.Name + '"';
                 myProcess.Start();
             }
             catch (Exception e)
             {
                 MessageBox.Show(" Failed to start Acrobat reader: \n\n" + e);
-            }
+                myProcess.Close();
+            }            
         }
 
         void MenuHelpAboutOnClick(object obj, EventArgs ea)

@@ -43,7 +43,6 @@
             this.textBoxOutput = new System.Windows.Forms.TextBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.buttonExit = new System.Windows.Forms.Button();
             this.button_start = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -59,46 +58,50 @@
             this.DGSTD = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.CopyCurrentTarget = new System.Windows.Forms.DataGridViewLinkColumn();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBoxDateFormat = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.comboBoxSex = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.linkLabelBuildDG = new System.Windows.Forms.LinkLabel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.textBoxMaxLines = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBoxSubjectSexM = new System.Windows.Forms.TextBox();
-            this.textBoxSubjectSexF = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.textBoxLocation = new System.Windows.Forms.TextBox();
-            this.checkBoxDup = new System.Windows.Forms.CheckBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButtonNoEVT = new System.Windows.Forms.RadioButton();
-            this.radioButtonUseTD = new System.Windows.Forms.RadioButton();
             this.labelWarningCounter = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.buttonConfPars = new System.Windows.Forms.Button();
             this.buttonBackToBegin = new System.Windows.Forms.Button();
             this.linkbuttonSHCols = new System.Windows.Forms.LinkLabel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.cbUploadOn = new System.Windows.Forms.CheckBox();
-            this.cbNotStarted = new System.Windows.Forms.CheckBox();
-            this.cbDataEntryStarted = new System.Windows.Forms.CheckBox();
-            this.cbDataEntryComplete = new System.Windows.Forms.CheckBox();
-            this.cbStatusAfterUpload = new System.Windows.Forms.CheckBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.rbStatusDataEntryStarted = new System.Windows.Forms.RadioButton();
-            this.rbStatusMarkedComplete = new System.Windows.Forms.RadioButton();
+            this.cbUploadWhen_NotStarted = new System.Windows.Forms.CheckBox();
+            this.rbStatusAfterUploadDataEntryStarted = new System.Windows.Forms.RadioButton();
+            this.rbInitialDataBaseStatus_StillEmpty = new System.Windows.Forms.RadioButton();
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted = new System.Windows.Forms.RadioButton();
+            this.gbInitialStatusCRFs = new System.Windows.Forms.GroupBox();
+            this.gbProgramParameters = new System.Windows.Forms.GroupBox();
             this.statusAfterUpload = new System.Windows.Forms.GroupBox();
+            this.rbStatusAfterUploadMarkedComplete = new System.Windows.Forms.RadioButton();
+            this.checkBoxDup = new System.Windows.Forms.CheckBox();
+            this.tbLocationEvent = new System.Windows.Forms.TextBox();
+            this.lbLocationEvent = new System.Windows.Forms.Label();
+            this.textBoxMaxLines = new System.Windows.Forms.TextBox();
+            this.lbMaxLines = new System.Windows.Forms.Label();
+            this.gbStartDateEmpty = new System.Windows.Forms.GroupBox();
+            this.radioButtonNoEVT = new System.Windows.Forms.RadioButton();
+            this.radioButtonUseTD = new System.Windows.Forms.RadioButton();
+            this.tbGenderCodeFemale = new System.Windows.Forms.TextBox();
+            this.lbGenderCodeFemale = new System.Windows.Forms.Label();
+            this.tbSubjectSexM = new System.Windows.Forms.TextBox();
+            this.lbGenderCodeMale = new System.Windows.Forms.Label();
+            this.cbSex = new System.Windows.Forms.ComboBox();
+            this.lbDefaultSex = new System.Windows.Forms.Label();
+            this.cbDateFormat = new System.Windows.Forms.ComboBox();
+            this.lbDateFormat = new System.Windows.Forms.Label();
+            this.gbInputFiles = new System.Windows.Forms.GroupBox();
+            this.buttonExit = new System.Windows.Forms.Button();
+            this.cbUploadWhen_DataEntryStarted = new System.Windows.Forms.CheckBox();
+            this.cbUploadWhen_DataEntryComplete = new System.Windows.Forms.CheckBox();
+            this.gbUploadWhenCRFStatus = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.gbInitialStatusCRFs.SuspendLayout();
+            this.gbProgramParameters.SuspendLayout();
             this.statusAfterUpload.SuspendLayout();
+            this.gbStartDateEmpty.SuspendLayout();
+            this.gbInputFiles.SuspendLayout();
+            this.gbUploadWhenCRFStatus.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxSE
@@ -109,7 +112,7 @@
             this.comboBoxSE.Name = "comboBoxSE";
             this.comboBoxSE.Size = new System.Drawing.Size(209, 21);
             this.comboBoxSE.Sorted = true;
-            this.comboBoxSE.TabIndex = 40;
+            this.comboBoxSE.TabIndex = 20;
             this.comboBoxSE.SelectedIndexChanged += new System.EventHandler(this.comboBoxSE_SelectedIndexChanged);
             // 
             // comboBoxCRF
@@ -121,7 +124,7 @@
             this.comboBoxCRF.Name = "comboBoxCRF";
             this.comboBoxCRF.Size = new System.Drawing.Size(195, 21);
             this.comboBoxCRF.Sorted = true;
-            this.comboBoxCRF.TabIndex = 50;
+            this.comboBoxCRF.TabIndex = 21;
             this.comboBoxCRF.SelectedIndexChanged += new System.EventHandler(this.comboBoxCRF_SelectedIndexChanged);
             // 
             // comboBoxIT
@@ -133,7 +136,7 @@
             this.comboBoxIT.Name = "comboBoxIT";
             this.comboBoxIT.Size = new System.Drawing.Size(562, 21);
             this.comboBoxIT.Sorted = true;
-            this.comboBoxIT.TabIndex = 70;
+            this.comboBoxIT.TabIndex = 23;
             this.comboBoxIT.SelectedIndexChanged += new System.EventHandler(this.comboBoxIT_SelectedIndexChanged);
             // 
             // comboBoxGR
@@ -145,14 +148,14 @@
             this.comboBoxGR.Name = "comboBoxGR";
             this.comboBoxGR.Size = new System.Drawing.Size(216, 21);
             this.comboBoxGR.Sorted = true;
-            this.comboBoxGR.TabIndex = 60;
+            this.comboBoxGR.TabIndex = 22;
             this.comboBoxGR.SelectedIndexChanged += new System.EventHandler(this.comboBoxGR_SelectedIndexChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Verdana", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(41, 9);
+            this.label1.Location = new System.Drawing.Point(38, -2);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 18);
             this.label1.TabIndex = 0;
@@ -160,7 +163,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(104, 33);
+            this.label3.Location = new System.Drawing.Point(6, 14);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(812, 13);
             this.label3.TabIndex = 2;
@@ -169,17 +172,17 @@
             // 
             // textBoxInput
             // 
-            this.textBoxInput.Location = new System.Drawing.Point(18, 52);
+            this.textBoxInput.Location = new System.Drawing.Point(6, 29);
             this.textBoxInput.Name = "textBoxInput";
             this.textBoxInput.Size = new System.Drawing.Size(891, 21);
-            this.textBoxInput.TabIndex = 3;
+            this.textBoxInput.TabIndex = 1;
             // 
             // buttonBrowse
             // 
-            this.buttonBrowse.Location = new System.Drawing.Point(916, 51);
+            this.buttonBrowse.Location = new System.Drawing.Point(902, 29);
             this.buttonBrowse.Name = "buttonBrowse";
             this.buttonBrowse.Size = new System.Drawing.Size(75, 23);
-            this.buttonBrowse.TabIndex = 4;
+            this.buttonBrowse.TabIndex = 2;
             this.buttonBrowse.Text = "Browse";
             this.buttonBrowse.UseVisualStyleBackColor = true;
             this.buttonBrowse.Click += new System.EventHandler(this.buttonBrowse_Click_1);
@@ -191,7 +194,7 @@
             this.buttonStartConversion.Location = new System.Drawing.Point(726, 592);
             this.buttonStartConversion.Name = "buttonStartConversion";
             this.buttonStartConversion.Size = new System.Drawing.Size(80, 23);
-            this.buttonStartConversion.TabIndex = 7;
+            this.buttonStartConversion.TabIndex = 27;
             this.buttonStartConversion.Text = "Start";
             this.buttonStartConversion.UseVisualStyleBackColor = false;
             this.buttonStartConversion.Click += new System.EventHandler(this.buttonStartConversion_Click_1);
@@ -204,7 +207,7 @@
             this.progressBar1.Location = new System.Drawing.Point(104, 621);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(1117, 23);
-            this.progressBar1.TabIndex = 8;
+            this.progressBar1.TabIndex = 0;
             // 
             // textBoxOutput
             // 
@@ -216,8 +219,9 @@
             this.textBoxOutput.Name = "textBoxOutput";
             this.textBoxOutput.ReadOnly = true;
             this.textBoxOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxOutput.Size = new System.Drawing.Size(1178, 85);
-            this.textBoxOutput.TabIndex = 9;
+            this.textBoxOutput.Size = new System.Drawing.Size(1067, 101);
+            this.textBoxOutput.TabIndex = 0;
+            this.textBoxOutput.TabStop = false;
             // 
             // buttonCancel
             // 
@@ -225,7 +229,7 @@
             this.buttonCancel.Location = new System.Drawing.Point(820, 591);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 10;
+            this.buttonCancel.TabIndex = 28;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -239,22 +243,12 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Progress";
             // 
-            // buttonExit
-            // 
-            this.buttonExit.Location = new System.Drawing.Point(1143, 52);
-            this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(75, 23);
-            this.buttonExit.TabIndex = 12;
-            this.buttonExit.Text = "Exit";
-            this.buttonExit.UseVisualStyleBackColor = true;
-            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
-            // 
             // button_start
             // 
-            this.button_start.Location = new System.Drawing.Point(997, 51);
+            this.button_start.Location = new System.Drawing.Point(983, 29);
             this.button_start.Name = "button_start";
             this.button_start.Size = new System.Drawing.Size(135, 23);
-            this.button_start.TabIndex = 61;
+            this.button_start.TabIndex = 3;
             this.button_start.Text = "Read Input Files";
             this.button_start.UseVisualStyleBackColor = true;
             this.button_start.Click += new System.EventHandler(this.button_start_Click);
@@ -302,10 +296,10 @@
             this.DGDOB,
             this.DGSTD,
             this.CopyCurrentTarget});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 257);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 260);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(1203, 284);
-            this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.TabIndex = 19;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // DGStudyDataCol
@@ -382,146 +376,16 @@
             this.label7.TabIndex = 71;
             this.label7.Text = "Item";
             // 
-            // comboBoxDateFormat
-            // 
-            this.comboBoxDateFormat.FormattingEnabled = true;
-            this.comboBoxDateFormat.Items.AddRange(new object[] {
-            "--select--",
-            "day-month-year",
-            "month-day-year",
-            "year-month-day"});
-            this.comboBoxDateFormat.Location = new System.Drawing.Point(183, 101);
-            this.comboBoxDateFormat.Name = "comboBoxDateFormat";
-            this.comboBoxDateFormat.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxDateFormat.TabIndex = 72;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(17, 104);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(160, 13);
-            this.label8.TabIndex = 73;
-            this.label8.Text = "Date format in study items";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(18, 163);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(120, 13);
-            this.label9.TabIndex = 75;
-            this.label9.Text = "Replace string pairs";
-            this.label9.Visible = false;
-            // 
-            // comboBoxSex
-            // 
-            this.comboBoxSex.FormattingEnabled = true;
-            this.comboBoxSex.Items.AddRange(new object[] {
-            "f",
-            "m"});
-            this.comboBoxSex.Location = new System.Drawing.Point(461, 101);
-            this.comboBoxSex.Name = "comboBoxSex";
-            this.comboBoxSex.Size = new System.Drawing.Size(60, 21);
-            this.comboBoxSex.TabIndex = 76;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(316, 104);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(138, 13);
-            this.label10.TabIndex = 77;
-            this.label10.Text = "Default sex of subjects";
-            // 
             // linkLabelBuildDG
             // 
             this.linkLabelBuildDG.AutoSize = true;
             this.linkLabelBuildDG.Location = new System.Drawing.Point(486, 597);
             this.linkLabelBuildDG.Name = "linkLabelBuildDG";
             this.linkLabelBuildDG.Size = new System.Drawing.Size(91, 13);
-            this.linkLabelBuildDG.TabIndex = 78;
+            this.linkLabelBuildDG.TabIndex = 25;
             this.linkLabelBuildDG.TabStop = true;
             this.linkLabelBuildDG.Text = "Match columns";
             this.linkLabelBuildDG.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabelBuildDG_LinkClicked);
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(16, 136);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(504, 13);
-            this.label11.TabIndex = 79;
-            this.label11.Text = "Split the ODM file where each contains  the following number of subjects (0 = no " +
-    "split) ";
-            // 
-            // textBoxMaxLines
-            // 
-            this.textBoxMaxLines.Location = new System.Drawing.Point(526, 133);
-            this.textBoxMaxLines.Name = "textBoxMaxLines";
-            this.textBoxMaxLines.Size = new System.Drawing.Size(51, 21);
-            this.textBoxMaxLines.TabIndex = 77;
-            this.textBoxMaxLines.Text = "0";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(527, 104);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(127, 13);
-            this.label12.TabIndex = 80;
-            this.label12.Text = "Gender Code for m: ";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(723, 104);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(116, 13);
-            this.label13.TabIndex = 81;
-            this.label13.Text = "Gender Code for f:";
-            // 
-            // textBoxSubjectSexM
-            // 
-            this.textBoxSubjectSexM.Location = new System.Drawing.Point(660, 101);
-            this.textBoxSubjectSexM.Name = "textBoxSubjectSexM";
-            this.textBoxSubjectSexM.Size = new System.Drawing.Size(57, 21);
-            this.textBoxSubjectSexM.TabIndex = 82;
-            // 
-            // textBoxSubjectSexF
-            // 
-            this.textBoxSubjectSexF.Location = new System.Drawing.Point(845, 101);
-            this.textBoxSubjectSexF.Name = "textBoxSubjectSexF";
-            this.textBoxSubjectSexF.Size = new System.Drawing.Size(50, 21);
-            this.textBoxSubjectSexF.TabIndex = 83;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(595, 136);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(59, 13);
-            this.label14.TabIndex = 84;
-            this.label14.Text = "Location:";
-            // 
-            // textBoxLocation
-            // 
-            this.textBoxLocation.Location = new System.Drawing.Point(660, 133);
-            this.textBoxLocation.Name = "textBoxLocation";
-            this.textBoxLocation.Size = new System.Drawing.Size(151, 21);
-            this.textBoxLocation.TabIndex = 85;
-            // 
-            // checkBoxDup
-            // 
-            this.checkBoxDup.AutoSize = true;
-            this.checkBoxDup.Location = new System.Drawing.Point(909, 157);
-            this.checkBoxDup.Name = "checkBoxDup";
-            this.checkBoxDup.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBoxDup.Size = new System.Drawing.Size(224, 17);
-            this.checkBoxDup.TabIndex = 87;
-            this.checkBoxDup.Text = "Check duplicate study subject ID\'s";
-            this.checkBoxDup.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.checkBoxDup.UseVisualStyleBackColor = true;
             // 
             // linkLabel1
             // 
@@ -529,43 +393,10 @@
             this.linkLabel1.Location = new System.Drawing.Point(595, 596);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(108, 13);
-            this.linkLabel1.TabIndex = 91;
+            this.linkLabel1.TabIndex = 26;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Unmatch columns";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.radioButtonNoEVT);
-            this.groupBox1.Controls.Add(this.radioButtonUseTD);
-            this.groupBox1.Location = new System.Drawing.Point(907, 94);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(304, 55);
-            this.groupBox1.TabIndex = 92;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "If Subject start date is empty in data file:";
-            // 
-            // radioButtonNoEVT
-            // 
-            this.radioButtonNoEVT.AutoSize = true;
-            this.radioButtonNoEVT.Location = new System.Drawing.Point(12, 34);
-            this.radioButtonNoEVT.Name = "radioButtonNoEVT";
-            this.radioButtonNoEVT.Size = new System.Drawing.Size(201, 17);
-            this.radioButtonNoEVT.TabIndex = 1;
-            this.radioButtonNoEVT.TabStop = true;
-            this.radioButtonNoEVT.Text = "Do not generate Event records";
-            this.radioButtonNoEVT.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonUseTD
-            // 
-            this.radioButtonUseTD.AutoSize = true;
-            this.radioButtonUseTD.Location = new System.Drawing.Point(12, 16);
-            this.radioButtonUseTD.Name = "radioButtonUseTD";
-            this.radioButtonUseTD.Size = new System.Drawing.Size(117, 17);
-            this.radioButtonUseTD.TabIndex = 0;
-            this.radioButtonUseTD.TabStop = true;
-            this.radioButtonUseTD.Text = "Use todays date";
-            this.radioButtonUseTD.UseVisualStyleBackColor = true;
             // 
             // labelWarningCounter
             // 
@@ -575,26 +406,6 @@
             this.labelWarningCounter.Name = "labelWarningCounter";
             this.labelWarningCounter.Size = new System.Drawing.Size(0, 13);
             this.labelWarningCounter.TabIndex = 93;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(18, 82);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(147, 13);
-            this.label15.TabIndex = 94;
-            this.label15.Text = "Program Parametres:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(18, 33);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(81, 13);
-            this.label16.TabIndex = 95;
-            this.label16.Text = "Input Files:";
             // 
             // label17
             // 
@@ -608,11 +419,11 @@
             // 
             // buttonConfPars
             // 
-            this.buttonConfPars.Location = new System.Drawing.Point(907, 211);
+            this.buttonConfPars.Location = new System.Drawing.Point(1094, 144);
             this.buttonConfPars.Name = "buttonConfPars";
-            this.buttonConfPars.Size = new System.Drawing.Size(224, 23);
-            this.buttonConfPars.TabIndex = 97;
-            this.buttonConfPars.Text = "Confirm Program Parametres";
+            this.buttonConfPars.Size = new System.Drawing.Size(102, 28);
+            this.buttonConfPars.TabIndex = 18;
+            this.buttonConfPars.Text = "Confirm";
             this.buttonConfPars.UseVisualStyleBackColor = true;
             this.buttonConfPars.Click += new System.EventHandler(this.buttonConfPars_Click);
             // 
@@ -621,7 +432,7 @@
             this.buttonBackToBegin.Location = new System.Drawing.Point(919, 590);
             this.buttonBackToBegin.Name = "buttonBackToBegin";
             this.buttonBackToBegin.Size = new System.Drawing.Size(142, 23);
-            this.buttonBackToBegin.TabIndex = 98;
+            this.buttonBackToBegin.TabIndex = 29;
             this.buttonBackToBegin.Text = "Back To Beginning";
             this.buttonBackToBegin.UseVisualStyleBackColor = true;
             this.buttonBackToBegin.Click += new System.EventHandler(this.buttonBackToBegin_Click);
@@ -632,185 +443,387 @@
             this.linkbuttonSHCols.Location = new System.Drawing.Point(274, 597);
             this.linkbuttonSHCols.Name = "linkbuttonSHCols";
             this.linkbuttonSHCols.Size = new System.Drawing.Size(180, 13);
-            this.linkbuttonSHCols.TabIndex = 99;
+            this.linkbuttonSHCols.TabIndex = 24;
             this.linkbuttonSHCols.TabStop = true;
             this.linkbuttonSHCols.Text = "Hide Subject Related Columns";
             this.linkbuttonSHCols.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkbuttonSHCols_LinkClicked);
             // 
-            // toolTip1
+            // cbUploadWhen_NotStarted
             // 
-            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
+            this.cbUploadWhen_NotStarted.AutoSize = true;
+            this.cbUploadWhen_NotStarted.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.cbUploadWhen_NotStarted.Location = new System.Drawing.Point(6, 15);
+            this.cbUploadWhen_NotStarted.Name = "cbUploadWhen_NotStarted";
+            this.cbUploadWhen_NotStarted.Size = new System.Drawing.Size(111, 17);
+            this.cbUploadWhen_NotStarted.TabIndex = 15;
+            this.cbUploadWhen_NotStarted.Text = "Not Started     ";
+            this.toolTip1.SetToolTip(this.cbUploadWhen_NotStarted, "Hallo This is the Help");
+            this.cbUploadWhen_NotStarted.UseVisualStyleBackColor = true;
             // 
-            // cbUploadOn
+            // rbStatusAfterUploadDataEntryStarted
             // 
-            this.cbUploadOn.AutoSize = true;
-            this.cbUploadOn.Image = ((System.Drawing.Image)(resources.GetObject("cbUploadOn.Image")));
-            this.cbUploadOn.ImageAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.cbUploadOn.Location = new System.Drawing.Point(37, 190);
-            this.cbUploadOn.Name = "cbUploadOn";
-            this.cbUploadOn.Size = new System.Drawing.Size(125, 17);
-            this.cbUploadOn.TabIndex = 100;
-            this.cbUploadOn.Text = "Upload When      ";
-            this.toolTip1.SetToolTip(this.cbUploadOn, "Hallo This is the Help\r\nText. It contains multiple lines to increase readablility" +
-        ".\r\n\r\nHallo and good-bye");
-            this.cbUploadOn.UseVisualStyleBackColor = true;
-            this.cbUploadOn.CheckedChanged += new System.EventHandler(this.onCheckChangedUploadWhen);
+            this.rbStatusAfterUploadDataEntryStarted.AutoSize = true;
+            this.rbStatusAfterUploadDataEntryStarted.Checked = true;
+            this.rbStatusAfterUploadDataEntryStarted.Enabled = false;
+            this.rbStatusAfterUploadDataEntryStarted.Image = ((System.Drawing.Image)(resources.GetObject("rbStatusAfterUploadDataEntryStarted.Image")));
+            this.rbStatusAfterUploadDataEntryStarted.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rbStatusAfterUploadDataEntryStarted.Location = new System.Drawing.Point(9, 20);
+            this.rbStatusAfterUploadDataEntryStarted.Name = "rbStatusAfterUploadDataEntryStarted";
+            this.rbStatusAfterUploadDataEntryStarted.Size = new System.Drawing.Size(257, 17);
+            this.rbStatusAfterUploadDataEntryStarted.TabIndex = 15;
+            this.rbStatusAfterUploadDataEntryStarted.TabStop = true;
+            this.rbStatusAfterUploadDataEntryStarted.Tag = "0";
+            this.rbStatusAfterUploadDataEntryStarted.Text = "Initial data entry (Data entry Started)    ";
+            this.toolTip1.SetToolTip(this.rbStatusAfterUploadDataEntryStarted, "Complete indicates data entry of this CRF is \r\ncompleted (after upload)\r\n\r\nSelect" +
+        "ing Initial Data entry indicates this CRF \r\ndata is not yet completed (after upl" +
+        "oad)");
+            this.rbStatusAfterUploadDataEntryStarted.UseVisualStyleBackColor = true;
             // 
-            // cbNotStarted
+            // rbInitialDataBaseStatus_StillEmpty
             // 
-            this.cbNotStarted.AutoSize = true;
-            this.cbNotStarted.Location = new System.Drawing.Point(172, 190);
-            this.cbNotStarted.Name = "cbNotStarted";
-            this.cbNotStarted.Size = new System.Drawing.Size(91, 17);
-            this.cbNotStarted.TabIndex = 101;
-            this.cbNotStarted.Text = "Not Started";
-            this.cbNotStarted.UseVisualStyleBackColor = true;
+            this.rbInitialDataBaseStatus_StillEmpty.AutoSize = true;
+            this.rbInitialDataBaseStatus_StillEmpty.Checked = true;
+            this.rbInitialDataBaseStatus_StillEmpty.Image = ((System.Drawing.Image)(resources.GetObject("rbInitialDataBaseStatus_StillEmpty.Image")));
+            this.rbInitialDataBaseStatus_StillEmpty.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rbInitialDataBaseStatus_StillEmpty.Location = new System.Drawing.Point(7, 14);
+            this.rbInitialDataBaseStatus_StillEmpty.Name = "rbInitialDataBaseStatus_StillEmpty";
+            this.rbInitialDataBaseStatus_StillEmpty.Size = new System.Drawing.Size(329, 17);
+            this.rbInitialDataBaseStatus_StillEmpty.TabIndex = 13;
+            this.rbInitialDataBaseStatus_StillEmpty.TabStop = true;
+            this.rbInitialDataBaseStatus_StillEmpty.Text = "OpenClinica database is still empty for these CRFs    ";
+            this.toolTip1.SetToolTip(this.rbInitialDataBaseStatus_StillEmpty, resources.GetString("rbInitialDataBaseStatus_StillEmpty.ToolTip"));
+            this.rbInitialDataBaseStatus_StillEmpty.UseVisualStyleBackColor = true;
+            this.rbInitialDataBaseStatus_StillEmpty.CheckedChanged += new System.EventHandler(this.rbOCDataBaseStatus_StillEmpty_CheckedChanged);
             // 
-            // cbDataEntryStarted
+            // rbInitialDataBaseStatus_DataEntryAllreadyStarted
             // 
-            this.cbDataEntryStarted.AutoSize = true;
-            this.cbDataEntryStarted.Location = new System.Drawing.Point(172, 212);
-            this.cbDataEntryStarted.Name = "cbDataEntryStarted";
-            this.cbDataEntryStarted.Size = new System.Drawing.Size(133, 17);
-            this.cbDataEntryStarted.TabIndex = 102;
-            this.cbDataEntryStarted.Text = "Data Entry Started";
-            this.cbDataEntryStarted.UseVisualStyleBackColor = true;
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.AutoSize = true;
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.Location = new System.Drawing.Point(7, 35);
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.Name = "rbInitialDataBaseStatus_DataEntryAllreadyStarted";
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.Size = new System.Drawing.Size(265, 17);
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.TabIndex = 14;
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.Text = "Data entry already started for these CRFs";
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.UseVisualStyleBackColor = true;
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.CheckedChanged += new System.EventHandler(this.rbOCDataBaseStatus_DataEntryAllreadyStarted_CheckedChanged);
             // 
-            // cbDataEntryComplete
+            // gbInitialStatusCRFs
             // 
-            this.cbDataEntryComplete.AutoSize = true;
-            this.cbDataEntryComplete.Location = new System.Drawing.Point(172, 235);
-            this.cbDataEntryComplete.Name = "cbDataEntryComplete";
-            this.cbDataEntryComplete.Size = new System.Drawing.Size(146, 17);
-            this.cbDataEntryComplete.TabIndex = 109;
-            this.cbDataEntryComplete.Text = "Data Entry Complete";
-            this.cbDataEntryComplete.UseVisualStyleBackColor = true;
-            this.cbDataEntryComplete.CheckedChanged += new System.EventHandler(this.onDataEntryCompleteToggled);
+            this.gbInitialStatusCRFs.Controls.Add(this.rbInitialDataBaseStatus_StillEmpty);
+            this.gbInitialStatusCRFs.Controls.Add(this.rbInitialDataBaseStatus_DataEntryAllreadyStarted);
+            this.gbInitialStatusCRFs.Location = new System.Drawing.Point(18, 87);
+            this.gbInitialStatusCRFs.Name = "gbInitialStatusCRFs";
+            this.gbInitialStatusCRFs.Size = new System.Drawing.Size(349, 63);
+            this.gbInitialStatusCRFs.TabIndex = 114;
+            this.gbInitialStatusCRFs.TabStop = false;
+            this.gbInitialStatusCRFs.Text = "Status OpenClinica Database:";
             // 
-            // cbStatusAfterUpload
+            // gbProgramParameters
             // 
-            this.cbStatusAfterUpload.AutoSize = true;
-            this.cbStatusAfterUpload.Location = new System.Drawing.Point(16, 12);
-            this.cbStatusAfterUpload.Name = "cbStatusAfterUpload";
-            this.cbStatusAfterUpload.Size = new System.Drawing.Size(135, 17);
-            this.cbStatusAfterUpload.TabIndex = 104;
-            this.cbStatusAfterUpload.Text = "Status after upload";
-            this.cbStatusAfterUpload.UseVisualStyleBackColor = true;
-            this.cbStatusAfterUpload.CheckedChanged += new System.EventHandler(this.onCheckChangedStatusAfterUpload);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.statusAfterUpload);
-            this.panel1.Controls.Add(this.cbStatusAfterUpload);
-            this.panel1.Location = new System.Drawing.Point(324, 178);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(430, 74);
-            this.panel1.TabIndex = 111;
-            // 
-            // rbStatusDataEntryStarted
-            // 
-            this.rbStatusDataEntryStarted.AutoSize = true;
-            this.rbStatusDataEntryStarted.Checked = true;
-            this.rbStatusDataEntryStarted.Enabled = false;
-            this.rbStatusDataEntryStarted.Location = new System.Drawing.Point(13, 9);
-            this.rbStatusDataEntryStarted.Name = "rbStatusDataEntryStarted";
-            this.rbStatusDataEntryStarted.Size = new System.Drawing.Size(241, 17);
-            this.rbStatusDataEntryStarted.TabIndex = 0;
-            this.rbStatusDataEntryStarted.TabStop = true;
-            this.rbStatusDataEntryStarted.Tag = "0";
-            this.rbStatusDataEntryStarted.Text = "Initial data entry (Data entry Started)";
-            this.rbStatusDataEntryStarted.UseVisualStyleBackColor = true;
-            this.rbStatusDataEntryStarted.Click += new System.EventHandler(this.onClickDataEntryStartedStatus);
-            // 
-            // rbStatusMarkedComplete
-            // 
-            this.rbStatusMarkedComplete.AutoSize = true;
-            this.rbStatusMarkedComplete.Enabled = false;
-            this.rbStatusMarkedComplete.Location = new System.Drawing.Point(13, 28);
-            this.rbStatusMarkedComplete.Name = "rbStatusMarkedComplete";
-            this.rbStatusMarkedComplete.Size = new System.Drawing.Size(126, 17);
-            this.rbStatusMarkedComplete.TabIndex = 1;
-            this.rbStatusMarkedComplete.Tag = "1";
-            this.rbStatusMarkedComplete.Text = "Marked Complete";
-            this.rbStatusMarkedComplete.UseVisualStyleBackColor = true;
+            this.gbProgramParameters.Controls.Add(this.statusAfterUpload);
+            this.gbProgramParameters.Controls.Add(this.checkBoxDup);
+            this.gbProgramParameters.Controls.Add(this.tbLocationEvent);
+            this.gbProgramParameters.Controls.Add(this.lbLocationEvent);
+            this.gbProgramParameters.Controls.Add(this.buttonConfPars);
+            this.gbProgramParameters.Controls.Add(this.textBoxMaxLines);
+            this.gbProgramParameters.Controls.Add(this.lbMaxLines);
+            this.gbProgramParameters.Controls.Add(this.gbStartDateEmpty);
+            this.gbProgramParameters.Controls.Add(this.tbGenderCodeFemale);
+            this.gbProgramParameters.Controls.Add(this.lbGenderCodeFemale);
+            this.gbProgramParameters.Controls.Add(this.tbSubjectSexM);
+            this.gbProgramParameters.Controls.Add(this.lbGenderCodeMale);
+            this.gbProgramParameters.Controls.Add(this.cbSex);
+            this.gbProgramParameters.Controls.Add(this.lbDefaultSex);
+            this.gbProgramParameters.Controls.Add(this.cbDateFormat);
+            this.gbProgramParameters.Controls.Add(this.lbDateFormat);
+            this.gbProgramParameters.Controls.Add(this.gbInitialStatusCRFs);
+            this.gbProgramParameters.Controls.Add(this.gbUploadWhenCRFStatus);
+            this.gbProgramParameters.Location = new System.Drawing.Point(12, 68);
+            this.gbProgramParameters.Name = "gbProgramParameters";
+            this.gbProgramParameters.Size = new System.Drawing.Size(1223, 183);
+            this.gbProgramParameters.TabIndex = 116;
+            this.gbProgramParameters.TabStop = false;
+            this.gbProgramParameters.Text = "Program Parameters";
+            this.toolTip1.SetToolTip(this.gbProgramParameters, resources.GetString("gbProgramParameters.ToolTip"));
             // 
             // statusAfterUpload
             // 
-            this.statusAfterUpload.Controls.Add(this.rbStatusMarkedComplete);
-            this.statusAfterUpload.Controls.Add(this.rbStatusDataEntryStarted);
-            this.statusAfterUpload.Location = new System.Drawing.Point(157, 3);
+            this.statusAfterUpload.Controls.Add(this.rbStatusAfterUploadMarkedComplete);
+            this.statusAfterUpload.Controls.Add(this.rbStatusAfterUploadDataEntryStarted);
+            this.statusAfterUpload.Location = new System.Drawing.Point(607, 87);
             this.statusAfterUpload.Name = "statusAfterUpload";
-            this.statusAfterUpload.Size = new System.Drawing.Size(259, 54);
-            this.statusAfterUpload.TabIndex = 110;
+            this.statusAfterUpload.Size = new System.Drawing.Size(276, 68);
+            this.statusAfterUpload.TabIndex = 120;
             this.statusAfterUpload.TabStop = false;
-            this.statusAfterUpload.Enter += new System.EventHandler(this.statusAfterUpload_Enter);
+            this.statusAfterUpload.Text = "  CRF Status after upload  ";
+            // 
+            // rbStatusAfterUploadMarkedComplete
+            // 
+            this.rbStatusAfterUploadMarkedComplete.AutoSize = true;
+            this.rbStatusAfterUploadMarkedComplete.Enabled = false;
+            this.rbStatusAfterUploadMarkedComplete.Location = new System.Drawing.Point(9, 39);
+            this.rbStatusAfterUploadMarkedComplete.Name = "rbStatusAfterUploadMarkedComplete";
+            this.rbStatusAfterUploadMarkedComplete.Size = new System.Drawing.Size(126, 17);
+            this.rbStatusAfterUploadMarkedComplete.TabIndex = 16;
+            this.rbStatusAfterUploadMarkedComplete.Tag = "1";
+            this.rbStatusAfterUploadMarkedComplete.Text = "Marked Complete";
+            this.rbStatusAfterUploadMarkedComplete.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDup
+            // 
+            this.checkBoxDup.AutoSize = true;
+            this.checkBoxDup.Location = new System.Drawing.Point(907, 87);
+            this.checkBoxDup.Name = "checkBoxDup";
+            this.checkBoxDup.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.checkBoxDup.Size = new System.Drawing.Size(224, 17);
+            this.checkBoxDup.TabIndex = 17;
+            this.checkBoxDup.Text = "Check duplicate study subject ID\'s";
+            this.checkBoxDup.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.checkBoxDup.UseVisualStyleBackColor = true;
+            // 
+            // tbLocationEvent
+            // 
+            this.tbLocationEvent.Location = new System.Drawing.Point(648, 54);
+            this.tbLocationEvent.Name = "tbLocationEvent";
+            this.tbLocationEvent.Size = new System.Drawing.Size(151, 21);
+            this.tbLocationEvent.TabIndex = 12;
+            // 
+            // lbLocationEvent
+            // 
+            this.lbLocationEvent.AutoSize = true;
+            this.lbLocationEvent.Location = new System.Drawing.Point(580, 59);
+            this.lbLocationEvent.Name = "lbLocationEvent";
+            this.lbLocationEvent.Size = new System.Drawing.Size(59, 13);
+            this.lbLocationEvent.TabIndex = 118;
+            this.lbLocationEvent.Text = "Location:";
+            // 
+            // textBoxMaxLines
+            // 
+            this.textBoxMaxLines.Location = new System.Drawing.Point(518, 54);
+            this.textBoxMaxLines.Name = "textBoxMaxLines";
+            this.textBoxMaxLines.Size = new System.Drawing.Size(51, 21);
+            this.textBoxMaxLines.TabIndex = 11;
+            this.textBoxMaxLines.Text = "0";
+            // 
+            // lbMaxLines
+            // 
+            this.lbMaxLines.AutoSize = true;
+            this.lbMaxLines.Location = new System.Drawing.Point(6, 59);
+            this.lbMaxLines.Name = "lbMaxLines";
+            this.lbMaxLines.Size = new System.Drawing.Size(504, 13);
+            this.lbMaxLines.TabIndex = 119;
+            this.lbMaxLines.Text = "Split the ODM file where each contains  the following number of subjects (0 = no " +
+    "split) ";
+            // 
+            // gbStartDateEmpty
+            // 
+            this.gbStartDateEmpty.Controls.Add(this.radioButtonNoEVT);
+            this.gbStartDateEmpty.Controls.Add(this.radioButtonUseTD);
+            this.gbStartDateEmpty.Location = new System.Drawing.Point(907, 17);
+            this.gbStartDateEmpty.Name = "gbStartDateEmpty";
+            this.gbStartDateEmpty.Size = new System.Drawing.Size(304, 55);
+            this.gbStartDateEmpty.TabIndex = 118;
+            this.gbStartDateEmpty.TabStop = false;
+            this.gbStartDateEmpty.Text = "  If Subject start date is empty in data file:  ";
+            // 
+            // radioButtonNoEVT
+            // 
+            this.radioButtonNoEVT.AutoSize = true;
+            this.radioButtonNoEVT.Location = new System.Drawing.Point(12, 34);
+            this.radioButtonNoEVT.Name = "radioButtonNoEVT";
+            this.radioButtonNoEVT.Size = new System.Drawing.Size(201, 17);
+            this.radioButtonNoEVT.TabIndex = 10;
+            this.radioButtonNoEVT.TabStop = true;
+            this.radioButtonNoEVT.Text = "Do not generate Event records";
+            this.radioButtonNoEVT.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonUseTD
+            // 
+            this.radioButtonUseTD.AutoSize = true;
+            this.radioButtonUseTD.Location = new System.Drawing.Point(12, 16);
+            this.radioButtonUseTD.Name = "radioButtonUseTD";
+            this.radioButtonUseTD.Size = new System.Drawing.Size(117, 17);
+            this.radioButtonUseTD.TabIndex = 9;
+            this.radioButtonUseTD.TabStop = true;
+            this.radioButtonUseTD.Text = "Use todays date";
+            this.radioButtonUseTD.UseVisualStyleBackColor = true;
+            // 
+            // tbGenderCodeFemale
+            // 
+            this.tbGenderCodeFemale.Location = new System.Drawing.Point(836, 22);
+            this.tbGenderCodeFemale.Name = "tbGenderCodeFemale";
+            this.tbGenderCodeFemale.Size = new System.Drawing.Size(50, 21);
+            this.tbGenderCodeFemale.TabIndex = 8;
+            // 
+            // lbGenderCodeFemale
+            // 
+            this.lbGenderCodeFemale.AutoSize = true;
+            this.lbGenderCodeFemale.Location = new System.Drawing.Point(708, 25);
+            this.lbGenderCodeFemale.Name = "lbGenderCodeFemale";
+            this.lbGenderCodeFemale.Size = new System.Drawing.Size(116, 13);
+            this.lbGenderCodeFemale.TabIndex = 118;
+            this.lbGenderCodeFemale.Text = "Gender Code for f:";
+            // 
+            // tbSubjectSexM
+            // 
+            this.tbSubjectSexM.Location = new System.Drawing.Point(645, 19);
+            this.tbSubjectSexM.Name = "tbSubjectSexM";
+            this.tbSubjectSexM.Size = new System.Drawing.Size(57, 21);
+            this.tbSubjectSexM.TabIndex = 7;
+            // 
+            // lbGenderCodeMale
+            // 
+            this.lbGenderCodeMale.AutoSize = true;
+            this.lbGenderCodeMale.Location = new System.Drawing.Point(515, 25);
+            this.lbGenderCodeMale.Name = "lbGenderCodeMale";
+            this.lbGenderCodeMale.Size = new System.Drawing.Size(127, 13);
+            this.lbGenderCodeMale.TabIndex = 118;
+            this.lbGenderCodeMale.Text = "Gender Code for m: ";
+            // 
+            // cbSex
+            // 
+            this.cbSex.FormattingEnabled = true;
+            this.cbSex.Items.AddRange(new object[] {
+            "f",
+            "m"});
+            this.cbSex.Location = new System.Drawing.Point(448, 20);
+            this.cbSex.Name = "cbSex";
+            this.cbSex.Size = new System.Drawing.Size(60, 21);
+            this.cbSex.TabIndex = 6;
+            // 
+            // lbDefaultSex
+            // 
+            this.lbDefaultSex.AutoSize = true;
+            this.lbDefaultSex.Location = new System.Drawing.Point(304, 25);
+            this.lbDefaultSex.Name = "lbDefaultSex";
+            this.lbDefaultSex.Size = new System.Drawing.Size(138, 13);
+            this.lbDefaultSex.TabIndex = 118;
+            this.lbDefaultSex.Text = "Default sex of subjects";
+            // 
+            // cbDateFormat
+            // 
+            this.cbDateFormat.FormattingEnabled = true;
+            this.cbDateFormat.Items.AddRange(new object[] {
+            "--select--",
+            "day-month-year",
+            "month-day-year",
+            "year-month-day"});
+            this.cbDateFormat.Location = new System.Drawing.Point(171, 19);
+            this.cbDateFormat.Name = "cbDateFormat";
+            this.cbDateFormat.Size = new System.Drawing.Size(121, 21);
+            this.cbDateFormat.TabIndex = 5;
+            // 
+            // lbDateFormat
+            // 
+            this.lbDateFormat.AutoSize = true;
+            this.lbDateFormat.Location = new System.Drawing.Point(5, 22);
+            this.lbDateFormat.Name = "lbDateFormat";
+            this.lbDateFormat.Size = new System.Drawing.Size(160, 13);
+            this.lbDateFormat.TabIndex = 115;
+            this.lbDateFormat.Text = "Date format in study items";
+            // 
+            // gbInputFiles
+            // 
+            this.gbInputFiles.Controls.Add(this.button_start);
+            this.gbInputFiles.Controls.Add(this.buttonBrowse);
+            this.gbInputFiles.Controls.Add(this.textBoxInput);
+            this.gbInputFiles.Controls.Add(this.label3);
+            this.gbInputFiles.Location = new System.Drawing.Point(11, -2);
+            this.gbInputFiles.Name = "gbInputFiles";
+            this.gbInputFiles.Size = new System.Drawing.Size(1223, 70);
+            this.gbInputFiles.TabIndex = 117;
+            this.gbInputFiles.TabStop = false;
+            this.gbInputFiles.Text = "  Input Files  ";
+            // 
+            // buttonExit
+            // 
+            this.buttonExit.Location = new System.Drawing.Point(1140, 695);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(75, 23);
+            this.buttonExit.TabIndex = 4;
+            this.buttonExit.Text = "Exit";
+            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
+            // cbUploadWhen_DataEntryStarted
+            // 
+            this.cbUploadWhen_DataEntryStarted.AutoSize = true;
+            this.cbUploadWhen_DataEntryStarted.Location = new System.Drawing.Point(6, 38);
+            this.cbUploadWhen_DataEntryStarted.Name = "cbUploadWhen_DataEntryStarted";
+            this.cbUploadWhen_DataEntryStarted.Size = new System.Drawing.Size(133, 17);
+            this.cbUploadWhen_DataEntryStarted.TabIndex = 16;
+            this.cbUploadWhen_DataEntryStarted.Text = "Data Entry Started";
+            this.cbUploadWhen_DataEntryStarted.UseVisualStyleBackColor = true;
+            // 
+            // cbUploadWhen_DataEntryComplete
+            // 
+            this.cbUploadWhen_DataEntryComplete.AutoSize = true;
+            this.cbUploadWhen_DataEntryComplete.Location = new System.Drawing.Point(6, 61);
+            this.cbUploadWhen_DataEntryComplete.Name = "cbUploadWhen_DataEntryComplete";
+            this.cbUploadWhen_DataEntryComplete.Size = new System.Drawing.Size(146, 17);
+            this.cbUploadWhen_DataEntryComplete.TabIndex = 14;
+            this.cbUploadWhen_DataEntryComplete.Text = "Data Entry Complete";
+            this.cbUploadWhen_DataEntryComplete.UseVisualStyleBackColor = true;
+            this.cbUploadWhen_DataEntryComplete.CheckedChanged += new System.EventHandler(this.warningStateChange);
+            // 
+            // gbUploadWhenCRFStatus
+            // 
+            this.gbUploadWhenCRFStatus.Controls.Add(this.cbUploadWhen_DataEntryComplete);
+            this.gbUploadWhenCRFStatus.Controls.Add(this.cbUploadWhen_NotStarted);
+            this.gbUploadWhenCRFStatus.Controls.Add(this.cbUploadWhen_DataEntryStarted);
+            this.gbUploadWhenCRFStatus.Location = new System.Drawing.Point(384, 84);
+            this.gbUploadWhenCRFStatus.Name = "gbUploadWhenCRFStatus";
+            this.gbUploadWhenCRFStatus.Size = new System.Drawing.Size(202, 88);
+            this.gbUploadWhenCRFStatus.TabIndex = 115;
+            this.gbUploadWhenCRFStatus.TabStop = false;
+            this.gbUploadWhenCRFStatus.Text = "  Upload if current CRF status  ";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1247, 750);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.cbDataEntryComplete);
-            this.Controls.Add(this.cbDataEntryStarted);
-            this.Controls.Add(this.cbNotStarted);
-            this.Controls.Add(this.cbUploadOn);
+            this.ClientSize = new System.Drawing.Size(1247, 766);
+            this.Controls.Add(this.gbInputFiles);
+            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.linkbuttonSHCols);
             this.Controls.Add(this.buttonBackToBegin);
-            this.Controls.Add(this.buttonConfPars);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label15);
             this.Controls.Add(this.labelWarningCounter);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.checkBoxDup);
-            this.Controls.Add(this.textBoxLocation);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBoxSubjectSexF);
-            this.Controls.Add(this.textBoxSubjectSexM);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.textBoxMaxLines);
-            this.Controls.Add(this.label11);
             this.Controls.Add(this.linkLabelBuildDG);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.comboBoxSex);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.comboBoxDateFormat);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.comboBoxIT);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button_start);
-            this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.textBoxOutput);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.buttonStartConversion);
-            this.Controls.Add(this.buttonBrowse);
-            this.Controls.Add(this.textBoxInput);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxGR);
             this.Controls.Add(this.comboBoxCRF);
             this.Controls.Add(this.comboBoxSE);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.gbProgramParameters);
             this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "OCDataImporter - Provided by VU Medical Center, dept. of Pathology, Amsterdam";
             this.toolTip1.SetToolTip(this, "asdfasdfasfsadfa");
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.gbInitialStatusCRFs.ResumeLayout(false);
+            this.gbInitialStatusCRFs.PerformLayout();
+            this.gbProgramParameters.ResumeLayout(false);
+            this.gbProgramParameters.PerformLayout();
             this.statusAfterUpload.ResumeLayout(false);
             this.statusAfterUpload.PerformLayout();
+            this.gbStartDateEmpty.ResumeLayout(false);
+            this.gbStartDateEmpty.PerformLayout();
+            this.gbInputFiles.ResumeLayout(false);
+            this.gbInputFiles.PerformLayout();
+            this.gbUploadWhenCRFStatus.ResumeLayout(false);
+            this.gbUploadWhenCRFStatus.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -828,7 +841,6 @@
         private System.Windows.Forms.ComboBox comboBoxIT; 
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.ComboBox comboBoxSE;
         private System.Windows.Forms.ComboBox comboBoxCRF;
         private System.Windows.Forms.ComboBox comboBoxGR;
@@ -837,28 +849,9 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox comboBoxDateFormat;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox comboBoxSex;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.LinkLabel linkLabelBuildDG;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBoxMaxLines;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBoxSubjectSexM;
-        private System.Windows.Forms.TextBox textBoxSubjectSexF;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBoxLocation;
-        private System.Windows.Forms.CheckBox checkBoxDup;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButtonNoEVT;
-        private System.Windows.Forms.RadioButton radioButtonUseTD;
         private System.Windows.Forms.Label labelWarningCounter;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button buttonConfPars;
         private System.Windows.Forms.Button buttonBackToBegin;
@@ -873,15 +866,35 @@
         private System.Windows.Forms.DataGridViewLinkColumn CopyCurrentTarget;
         private System.Windows.Forms.LinkLabel linkbuttonSHCols;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.CheckBox cbUploadOn;
-        private System.Windows.Forms.CheckBox cbNotStarted;
-        private System.Windows.Forms.CheckBox cbDataEntryStarted;
-        private System.Windows.Forms.CheckBox cbDataEntryComplete;
-        private System.Windows.Forms.CheckBox cbStatusAfterUpload;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton rbInitialDataBaseStatus_StillEmpty;
+        private System.Windows.Forms.RadioButton rbInitialDataBaseStatus_DataEntryAllreadyStarted;
+        private System.Windows.Forms.GroupBox gbInitialStatusCRFs;
+        private System.Windows.Forms.GroupBox gbProgramParameters;
+        private System.Windows.Forms.GroupBox gbInputFiles;
+        private System.Windows.Forms.Label lbDefaultSex;
+        private System.Windows.Forms.ComboBox cbDateFormat;
+        private System.Windows.Forms.Label lbDateFormat;
+        private System.Windows.Forms.TextBox tbLocationEvent;
+        private System.Windows.Forms.Label lbLocationEvent;
+        private System.Windows.Forms.TextBox textBoxMaxLines;
+        private System.Windows.Forms.Label lbMaxLines;
+        private System.Windows.Forms.GroupBox gbStartDateEmpty;
+        private System.Windows.Forms.RadioButton radioButtonNoEVT;
+        private System.Windows.Forms.RadioButton radioButtonUseTD;
+        private System.Windows.Forms.TextBox tbGenderCodeFemale;
+        private System.Windows.Forms.Label lbGenderCodeFemale;
+        private System.Windows.Forms.TextBox tbSubjectSexM;
+        private System.Windows.Forms.Label lbGenderCodeMale;
+        private System.Windows.Forms.ComboBox cbSex;
+        private System.Windows.Forms.CheckBox checkBoxDup;
+        private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.GroupBox statusAfterUpload;
-        private System.Windows.Forms.RadioButton rbStatusMarkedComplete;
-        private System.Windows.Forms.RadioButton rbStatusDataEntryStarted;
+        private System.Windows.Forms.RadioButton rbStatusAfterUploadMarkedComplete;
+        private System.Windows.Forms.RadioButton rbStatusAfterUploadDataEntryStarted;
+        private System.Windows.Forms.CheckBox cbUploadWhen_DataEntryStarted;
+        private System.Windows.Forms.CheckBox cbUploadWhen_NotStarted;
+        private System.Windows.Forms.CheckBox cbUploadWhen_DataEntryComplete;
+        private System.Windows.Forms.GroupBox gbUploadWhenCRFStatus;
     }
 }
 

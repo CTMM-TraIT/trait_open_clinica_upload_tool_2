@@ -202,8 +202,11 @@ namespace OCDataImporter
             Menu.MenuItems[1].MenuItems.Add("&About", new EventHandler(MenuHelpAboutOnClick));
             dataGridView1.RowsDefaultCellStyle.BackColor = Color.Bisque;
             dataGridView1.AlternatingRowsDefaultCellStyle.BackColor = Color.Beige;
-            textBoxLocation.Text = "Amsterdam"; // Our default location
+            tbLocationEvent.Text = "Amsterdam"; // Our default location
             radioButtonUseTD.Checked = true;  // this should be added to dmpprm, in later releases.
+
+            gbInputFiles.Enabled = true;
+            gbProgramParameters.Enabled = false;
             try
             {
                 fpipdf = new FileStream("OCDataImporter.pdf", FileMode.Open, FileAccess.Read);
@@ -396,21 +399,21 @@ namespace OCDataImporter
                         if (first)
                         {
                             string[] split = line.Split('~');
-                            comboBoxDateFormat.SelectedItem = split[0];
-                            comboBoxSex.SelectedItem = split[1];
-                            textBoxSubjectSexM.Text = split[2];
-                            textBoxSubjectSexF.Text = split[3];
+                            cbDateFormat.SelectedItem = split[0];
+                            cbSex.SelectedItem = split[1];
+                            tbSubjectSexM.Text = split[2];
+                            tbGenderCodeFemale.Text = split[3];
                             textBoxMaxLines.Text = split[4];
-                            textBoxLocation.Text = split[5];
-                            rbStatusMarkedComplete.Checked = Boolean.Parse(split[6]);
-                            rbStatusDataEntryStarted.Checked = Boolean.Parse(split[7]);
-                            cbUploadOn.Checked = Boolean.Parse(split[8]);
-                            cbStatusAfterUpload.Checked = Boolean.Parse(split[9]);
-                            cbNotStarted.Checked = Boolean.Parse(split[10]);
-                            cbDataEntryStarted.Checked = Boolean.Parse(split[11]);
-                            cbDataEntryComplete.Checked = Boolean.Parse(split[12]);
+                            tbLocationEvent.Text = split[5];
+                            rbStatusAfterUploadMarkedComplete.Checked = Boolean.Parse(split[6]);
+                            rbStatusAfterUploadDataEntryStarted.Checked = Boolean.Parse(split[7]);
+                            rbInitialDataBaseStatus_StillEmpty.Checked = Boolean.Parse(split[8]);
+                            rbInitialDataBaseStatus_DataEntryAllreadyStarted.Checked = Boolean.Parse(split[9]);                            
+                            cbUploadWhen_NotStarted.Checked = Boolean.Parse(split[10]);
+                            cbUploadWhen_DataEntryStarted.Checked = Boolean.Parse(split[11]);
+                            cbUploadWhen_DataEntryComplete.Checked = Boolean.Parse(split[12]);
                             first = false;
-                        }
+                        }                       
                     }
                     return;
                 }
@@ -479,15 +482,15 @@ namespace OCDataImporter
                 using (StreamWriter outPR = new StreamWriter(dmpprm))
                 {
                     // TODO change this to a serialized version.
-                    outPR.WriteLine(comboBoxDateFormat.SelectedItem + "~" + comboBoxSex.SelectedItem + "~" + textBoxSubjectSexM.Text + "~" 
-                                    + textBoxSubjectSexF.Text + "~" + textBoxMaxLines.Text + "~" + textBoxLocation.Text + "~"
-                                    + rbStatusMarkedComplete.Checked + "~"
-                                    + rbStatusDataEntryStarted.Checked + "~"
-                                    + cbUploadOn.Checked + "~"
-                                    + cbStatusAfterUpload.Checked + "~"
-                                    + cbNotStarted.Checked + "~"
-                                    + cbDataEntryStarted.Checked + "~"
-                                    + cbDataEntryComplete.Checked+ "~");
+                    outPR.WriteLine(cbDateFormat.SelectedItem + "~" + cbSex.SelectedItem + "~" + tbSubjectSexM.Text + "~" 
+                                    + tbGenderCodeFemale.Text + "~" + textBoxMaxLines.Text + "~" + tbLocationEvent.Text + "~"
+                                    + rbStatusAfterUploadMarkedComplete.Checked + "~"
+                                    + rbStatusAfterUploadDataEntryStarted.Checked + "~"
+                                    + rbInitialDataBaseStatus_StillEmpty.Checked + "~"
+                                    + rbInitialDataBaseStatus_DataEntryAllreadyStarted.Checked + "~"                                    
+                                    + cbUploadWhen_NotStarted.Checked + "~"
+                                    + cbUploadWhen_DataEntryStarted.Checked + "~"
+                                    + cbUploadWhen_DataEntryComplete.Checked+ "~");
                 }
             }
             catch (Exception ex)
@@ -545,7 +548,7 @@ namespace OCDataImporter
             buttonBackToBegin.BackColor = SystemColors.Control;
             buttonStartConversion.Enabled = false;
             buttonStartConversion.BackColor = SystemColors.Control;
-            buttonExit.Enabled = false;
+            buttonExit.Enabled = true;
             buttonExit.BackColor = SystemColors.Control;
             buttonCancel.Enabled = true;
             buttonCancel.BackColor = System.Drawing.Color.LightGreen;
@@ -553,6 +556,9 @@ namespace OCDataImporter
             linkbuttonSHCols.Enabled = false;
             linkLabel1.Enabled = false;
             progressBar1.Value = 0;
+            rbInitialDataBaseStatus_StillEmpty.Checked = true;
+            enableOCDataBaseStatus(false);
+            gbInitialStatusCRFs.Enabled = false;
             this.Cursor = Cursors.AppStarting;
         }
 
@@ -624,17 +630,15 @@ namespace OCDataImporter
             
             conversionSettings.checkForDuplicateSubjects = checkBoxDup.Checked;
             conversionSettings.useTodaysDateIfNoEventDate = radioButtonUseTD.Checked;
-            conversionSettings.dateFormat = comboBoxDateFormat.SelectedItem.ToString();
-            conversionSettings.defaultLocation = textBoxLocation.Text;
-            conversionSettings.defaultSubjectSex = comboBoxSex.SelectedItem.ToString();
+            conversionSettings.dateFormat = cbDateFormat.SelectedItem.ToString();
+            conversionSettings.defaultLocation = tbLocationEvent.Text;
+            conversionSettings.defaultSubjectSex = cbSex.SelectedItem.ToString();
             conversionSettings.outFMaxLines = System.Convert.ToInt32(textBoxMaxLines.Text);
-            conversionSettings.selectedStudyEvent = comboBoxSE.SelectedItem.ToString();
-            conversionSettings.useStatusAfterUpload = cbStatusAfterUpload.Checked;
-            conversionSettings.useUploadOn = cbUploadOn.Checked;                        
+            conversionSettings.selectedStudyEvent = comboBoxSE.SelectedItem.ToString();                        
             
-            conversionSettings.uploadOnNotStarted = cbNotStarted.Checked;
-            conversionSettings.uploadOnDataEntryStarted = cbDataEntryStarted.Checked;
-            conversionSettings.uploadOnDataEntryComplete = cbDataEntryComplete.Checked;
+            conversionSettings.uploadOnNotStarted = cbUploadWhen_NotStarted.Checked;
+            conversionSettings.uploadOnDataEntryStarted = cbUploadWhen_DataEntryStarted.Checked;
+            conversionSettings.uploadOnDataEntryComplete = cbUploadWhen_DataEntryComplete.Checked;            
 
             dumpTheGrid();
             Converter converter = new Converter(conversionSettings, studyMetaDataValidator, warningLog, this, labelOCoidExists, LabelOID);
@@ -1260,7 +1264,7 @@ namespace OCDataImporter
                 dataGrid.BuildDG(false, conversionSettings.selectedStudyEvent, conversionSettings.selectedCRF);
             }
             studyMetaDataValidator.BuildVerificationArrays(conversionSettings.pathToMetaDataFile, conversionSettings.workdir + "\\OCDataImporter_verification.txt", DEBUGMODE);
-            StateParametres();
+            StateParameters();
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -1324,33 +1328,28 @@ namespace OCDataImporter
 
         private void EnableRead()
         {
-            textBoxInput.Enabled = true;
-            button_start.Enabled = true;
-            buttonBrowse.Enabled = true;
+            gbInputFiles.Enabled = true;
+            
             button_start.BackColor = System.Drawing.Color.LightGreen;
-            buttonBrowse.BackColor = System.Drawing.Color.LightGreen;
-            label16.Visible = true;
-            label3.Visible = true;
-            buttonBackToBegin.Enabled = false;
+            buttonBrowse.BackColor = System.Drawing.Color.LightGreen;                                    
             buttonBackToBegin.BackColor = SystemColors.Control;
-            buttonCancel.Enabled = false;
             buttonCancel.BackColor = SystemColors.Control;
             label3.ForeColor = System.Drawing.Color.Black;
-            label16.ForeColor = System.Drawing.Color.Black;
+            buttonBrowse.Enabled = true;
+            button_start.Enabled = true;
         }
 
 
         private void DisableRead()
         {
-            textBoxInput.Enabled = false;
-            button_start.Enabled = false;
-            buttonBrowse.Enabled = false;
+            gbInputFiles.Enabled = false;
+            
             button_start.BackColor = SystemColors.Control;
             buttonBrowse.BackColor = SystemColors.Control;
-            label16.Visible = false;
-            label3.Visible = false;
-        }
-
+            buttonExit.Enabled = true;
+            buttonBrowse.Enabled = false;
+            button_start.Enabled = false;
+        }               
 
         private void EnableProcess()
         {
@@ -1365,6 +1364,7 @@ namespace OCDataImporter
             linkLabelBuildDG.Enabled = true;
             linkbuttonSHCols.Enabled = true;
             buttonStartConversion.Enabled = true;
+                        
             buttonStartConversion.BackColor = System.Drawing.Color.LightGreen;
             label17.Visible = true;
             label2.ForeColor = System.Drawing.Color.Black;
@@ -1386,8 +1386,7 @@ namespace OCDataImporter
             comboBoxSE.Enabled = false;
             linkLabel1.Enabled = false;
             linkLabelBuildDG.Enabled = false;
-            linkbuttonSHCols.Enabled = false;
-            buttonStartConversion.Enabled = false;
+            linkbuttonSHCols.Enabled = false;            
             buttonCancel.Enabled = false;
             buttonCancel.BackColor = SystemColors.Control;
             buttonStartConversion.BackColor = SystemColors.Control;
@@ -1395,75 +1394,40 @@ namespace OCDataImporter
             label2.ForeColor = System.Drawing.Color.LightGray;
             label5.ForeColor = System.Drawing.Color.LightGray;
             label6.ForeColor = System.Drawing.Color.LightGray;
-            label7.ForeColor = System.Drawing.Color.LightGray;
+            label7.ForeColor = System.Drawing.Color.LightGray;            
         }
 
 
         private void DisableParams()
-        {
-            label15.Visible = false;
-            comboBoxDateFormat.Enabled = false;
-            comboBoxSex.Enabled = false;
-            textBoxSubjectSexM.Enabled = false;
-            textBoxSubjectSexF.Enabled = false;
-            radioButtonUseTD.Enabled = false;
-            radioButtonNoEVT.Enabled = false;
-            textBoxMaxLines.Enabled = false;
-            textBoxLocation.Enabled = false;
-            checkBoxDup.Enabled = false;
+        {            
             buttonConfPars.BackColor = SystemColors.Control;
-            buttonConfPars.Enabled = false;
-            label11.ForeColor = System.Drawing.Color.LightGray;
-            label4.ForeColor = System.Drawing.Color.LightGray;
-            label8.ForeColor = System.Drawing.Color.LightGray;
-            label10.ForeColor = System.Drawing.Color.LightGray;
-            label12.ForeColor = System.Drawing.Color.LightGray;
-            label13.ForeColor = System.Drawing.Color.LightGray;
-            label14.ForeColor = System.Drawing.Color.LightGray;
-            groupBox1.ForeColor = System.Drawing.Color.LightGray;
-            checkBoxDup.ForeColor = System.Drawing.Color.LightGray;
-            cbUploadOn.Enabled = false;
-            cbNotStarted.Enabled = false;
-            cbDataEntryStarted.Enabled = false;
-            cbDataEntryComplete.Enabled = false;
-            cbStatusAfterUpload.Enabled = false;
-            rbStatusMarkedComplete.Enabled = false;
-            rbStatusDataEntryStarted.Enabled = false;
+            toggleParams(false);
         }
 
 
         private void EnableParams()
-        {
-            label15.Visible = true;
-            comboBoxDateFormat.Enabled = true;
-            comboBoxSex.Enabled = true;
-            textBoxSubjectSexM.Enabled = true;
-            textBoxSubjectSexF.Enabled = true;
-            radioButtonUseTD.Enabled = true;
-            radioButtonNoEVT.Enabled = true;
-            textBoxMaxLines.Enabled = true;
-            textBoxLocation.Enabled = true;
-            checkBoxDup.Enabled = true;
-            buttonConfPars.BackColor = System.Drawing.Color.LightGreen;
-            buttonConfPars.Enabled = true;
+        {                        
+            buttonConfPars.BackColor = System.Drawing.Color.LightGreen;            
             buttonBackToBegin.BackColor = System.Drawing.Color.LightGreen;
-            buttonBackToBegin.Enabled = true;
-            label11.ForeColor = System.Drawing.Color.Black;
-            label4.ForeColor = System.Drawing.Color.Black;
-            label8.ForeColor = System.Drawing.Color.Black;
-            label10.ForeColor = System.Drawing.Color.Black;
-            label12.ForeColor = System.Drawing.Color.Black;
-            label13.ForeColor = System.Drawing.Color.Black;
-            label14.ForeColor = System.Drawing.Color.Black;
-            groupBox1.ForeColor = System.Drawing.Color.Black;
-            checkBoxDup.ForeColor = System.Drawing.Color.Black;
-            cbUploadOn.Enabled = true;
-            cbNotStarted.Enabled = cbUploadOn.Checked;
-            cbDataEntryStarted.Enabled = cbUploadOn.Checked;
-            cbDataEntryComplete.Enabled = cbUploadOn.Checked;
-            cbStatusAfterUpload.Enabled = true;
-            rbStatusMarkedComplete.Enabled = cbStatusAfterUpload.Checked;
-            rbStatusDataEntryStarted.Enabled = cbStatusAfterUpload.Checked;
+            toggleParams(true);
+            checkOCInitialDBStatus();
+        }
+
+        private void toggleParams(Boolean enabled)
+        {
+            gbProgramParameters.Enabled = enabled;
+            gbUploadWhenCRFStatus.Enabled = enabled;
+            gbInitialStatusCRFs.Enabled = enabled;
+            buttonStartConversion.Enabled = enabled;
+            
+            rbInitialDataBaseStatus_DataEntryAllreadyStarted.Enabled = enabled;
+            rbInitialDataBaseStatus_StillEmpty.Enabled = enabled;            
+            statusAfterUpload.Enabled = enabled;
+            rbStatusAfterUploadDataEntryStarted.Enabled = enabled;
+            rbStatusAfterUploadMarkedComplete.Enabled = enabled;            
+            buttonConfPars.Enabled = enabled;
+            
+            enableOCDataBaseStatus(enabled);
         }
 
         private void StateReadFiles(bool begin)
@@ -1475,8 +1439,8 @@ namespace OCDataImporter
             buttonConfPars.BackColor = SystemColors.Control;
             if (begin)
             {
-                comboBoxDateFormat.SelectedIndex = 0;
-                comboBoxSex.SelectedIndex = 0;
+                cbDateFormat.SelectedIndex = 0;
+                cbSex.SelectedIndex = 0;
             }
             labelOCoidExists = false;
             dmpfilename = "";
@@ -1511,10 +1475,11 @@ namespace OCDataImporter
             textBoxInput.Focus();
             DisableProcess();
             DisableParams();
+            enableOCDataBaseStatus(rbInitialDataBaseStatus_DataEntryAllreadyStarted.Checked);
         }
 
 
-        private void StateParametres()
+        private void StateParameters()
         {
             DisableRead();
             EnableParams();
@@ -1542,13 +1507,13 @@ namespace OCDataImporter
 
         private void buttonConfPars_Click(object sender, EventArgs e)
         {
-            if (textBoxLocation.Text == "")
+            if (tbLocationEvent.Text == "")
             {
                 MessageBox.Show("Please enter location", "OCDataImporter");
                 return;
             }
-            conversionSettings.SUBJECTSEX_M = textBoxSubjectSexM.Text;
-            conversionSettings.SUBJECTSEX_F = textBoxSubjectSexF.Text;
+            conversionSettings.SUBJECTSEX_M = tbSubjectSexM.Text;
+            conversionSettings.SUBJECTSEX_F = tbGenderCodeFemale.Text;
             StateProcess();
         }
 
@@ -1559,6 +1524,8 @@ namespace OCDataImporter
             progressBar1.Value = 0;
             textBoxOutput.Text = "";
             labelWarningCounter.Text = "";
+            gbInputFiles.Enabled = true;
+            EnableRead();
         }
 
 
@@ -1594,54 +1561,64 @@ namespace OCDataImporter
                 }
             }
         }
-        
-
-        private void onCheckChangedStatusAfterUpload(object sender, EventArgs e)
-        {
-            rbStatusMarkedComplete.Enabled = cbStatusAfterUpload.Checked;
-            rbStatusDataEntryStarted.Enabled = cbStatusAfterUpload.Checked;
-        }
 
         private void onClickDataEntryStartedStatus(object sender, EventArgs e)
         {
-            if (rbStatusDataEntryStarted.Checked)
+            if (rbStatusAfterUploadDataEntryStarted.Checked)
             {
                 conversionSettings.statusAfterUpload = StatusAfterUpload.DATA_ENTRY_STARTED;
             }
             else
             {
-                if (rbStatusMarkedComplete.Checked)
+                if (rbStatusAfterUploadMarkedComplete.Checked)
                 {
                     conversionSettings.statusAfterUpload = StatusAfterUpload.MARKED_COMPLETE;
                 }
             }
         }
 
-        private void onCheckChangedUploadWhen(object sender, EventArgs e)
-        {
-            cbNotStarted.Enabled = cbUploadOn.Checked;
-            cbDataEntryStarted.Enabled = cbUploadOn.Checked;
-            cbDataEntryComplete.Enabled = cbUploadOn.Checked;
+        private void enableOCDataBaseStatus(Boolean enabled)
+        {            
+            cbUploadWhen_DataEntryComplete.Enabled = enabled;
+            cbUploadWhen_DataEntryStarted.Enabled = enabled;
+            cbUploadWhen_NotStarted.Enabled = enabled;            
         }
 
-        private void statusAfterUpload_Enter(object sender, EventArgs e)
+        private void checkOCInitialDBStatus()
         {
-
-        }
-
-        private void onDataEntryCompleteToggled(object sender, EventArgs e)
-        {
-            Boolean isChecked = cbDataEntryComplete.Checked;
-            if (isChecked)
+            if (rbInitialDataBaseStatus_DataEntryAllreadyStarted.Checked)
             {
-                String message = "Selecting the option 'Data Entry Complete' for Upsert On means that data will be overwritten for CRF's with the status 'Completed'.  CRF status 'Completed' can not be reverted after upload to 'Data Entry Started'.";
-                MessageBox.Show(message, "OCDataImporter - warning", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                conversionSettings.initialStatusCRFs = InitialStatusCRFS.DATA_ENTERY_STARTED;
+                enableOCDataBaseStatus(true);
+            }
+            else
+            {
+                if (rbInitialDataBaseStatus_StillEmpty.Checked)
+                {
+                    conversionSettings.initialStatusCRFs = InitialStatusCRFS.NO_DATA_ENTERY_STARTED;
+                    enableOCDataBaseStatus(false);
+                }
             }
         }
 
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        private void rbOCDataBaseStatus_DataEntryAllreadyStarted_CheckedChanged(object sender, EventArgs e)
         {
+            checkOCInitialDBStatus();
+        }
 
+        private void rbOCDataBaseStatus_StillEmpty_CheckedChanged(object sender, EventArgs e)
+        {
+            checkOCInitialDBStatus();
+        }
+
+        private void warningStateChange(object sender, EventArgs e)
+        {
+            Boolean isChecked = cbUploadWhen_DataEntryComplete.Checked;
+            if (isChecked)
+            {
+                String message = "It is not possible to change the the status of the CRF from marked complete to data entry started. If you continue data will be uploaded but the status of the CRF(s) will not be changed";
+                MessageBox.Show(message, "OCDataImporter - warning", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
         }
     }
 }

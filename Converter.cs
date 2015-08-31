@@ -672,8 +672,8 @@ namespace OCDataImporter
         }
 
         private string createUpsertOnOutput()
-        {                        
-            if (conversionSettings.useUploadOn)
+        {
+            if (conversionSettings.isUpsertOnRequested())
             {               
                 return "    <UpsertOn NotStarted=\"" + conversionSettings.uploadOnNotStarted.ToString().ToLower() + "\" " +
                                      "DataEntryStarted=\"" + conversionSettings.uploadOnDataEntryStarted.ToString().ToLower() + "\" " +

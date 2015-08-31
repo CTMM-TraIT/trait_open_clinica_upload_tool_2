@@ -12,6 +12,12 @@ namespace OCDataImporter
         MARKED_COMPLETE,
         DATA_ENTRY_STARTED
     }
+
+    public enum InitialStatusCRFS
+    {
+        NO_DATA_ENTERY_STARTED,
+        DATA_ENTERY_STARTED
+    }
     
     class ConversionSettings
     {
@@ -31,7 +37,7 @@ namespace OCDataImporter
         public bool useTodaysDateIfNoEventDate { get; set; }
         public bool checkForDuplicateSubjects { get; set; }
         public bool useStatusAfterUpload { get; set; }
-        public bool useUploadOn { get; set; }
+       
         public bool uploadOnNotStarted { get; set; }
         public bool uploadOnDataEntryStarted { get; set; }
         public bool uploadOnDataEntryComplete { get; set; }
@@ -39,6 +45,7 @@ namespace OCDataImporter
         public int sepCount { get; set; }
         public int outFMaxLines { get; set; }
         public StatusAfterUpload statusAfterUpload { get; set; }
+        public InitialStatusCRFS initialStatusCRFs { get; set; }
 
         public ArrayList Groups { get; set; }
         public ArrayList Forms { get; set; }
@@ -50,8 +57,12 @@ namespace OCDataImporter
             pathToMetaDataFile = "";
             pathToInputFile = "";
             checkForDuplicateSubjects = false;
-            useStatusAfterUpload = false;
-            useUploadOn = false;
+            useStatusAfterUpload = false;            
+        }
+
+        public Boolean isUpsertOnRequested()
+        {
+            return uploadOnNotStarted | uploadOnDataEntryComplete | uploadOnDataEntryStarted;
         }
 
         

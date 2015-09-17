@@ -144,7 +144,9 @@ namespace OCDataImporter
             {
                 int theYear = System.Convert.ToInt16(year);
                 DateTime dt = DateTime.Now;
-                if (theYear < 1700 || theYear > (System.Convert.ToInt16(dt.Year) + 1)) return false;
+                // changed to 9999. It is not up to the software to limit years. E.g. a study could want to register
+                // a next contact moment with a patient in 5, 6, N .... years. JR
+                if (theYear < 1700 || theYear > 9999) return false;
                 else return true;
             }
             catch (Exception ex)
@@ -160,25 +162,36 @@ namespace OCDataImporter
             try
             {
                 string[] splitd = theSource.Split('-');
-                if (splitd[0].Length == 4 && (splitd[1].Length == 3 || splitd[1].Length == 2))   // yyyy-mmm or yyyy-mm
+                if (splitd.Length == 2)
                 {
-                    string mon = Utilities.Get_maand(splitd[1]);
-                    if (mon.StartsWith("Error")) return (mon);
-                    else
+                    if (splitd[0].Length == 4 && (splitd[1].Length == 3 || splitd[1].Length == 2))   // yyyy-mmm or yyyy-mm
                     {
-                        if (Utilities.CheckYear(splitd[0])) return (splitd[0] + "-" + mon);
-                        else return ("Error: Wrong Year in partial date");
+                        string mon = Utilities.Get_maand(splitd[1]);
+                        if (mon.StartsWith("Error")) return (mon);
+                        else
+                        {
+                            if (Utilities.CheckYear(splitd[0])) return (mon + "-" + splitd[0]);
+                            else return ("Error: Wrong Year in partial date");
+                        }
+                    }
+                    if (splitd[1].Length == 4 && (splitd[0].Length == 3 || splitd[0].Length == 2))   // mmm-yyyy or mm-yyyy
+                    {
+                        string mon = Utilities.Get_maand(splitd[0]);
+                        if (mon.StartsWith("Error")) return (mon);
+                        else
+                        {
+                            if (Utilities.CheckYear(splitd[1])) return (mon + "-" + splitd[1]);
+                            else return ("Error: Wrong Year in partial date");
+                        }
                     }
                 }
-                if (splitd[1].Length == 4 && (splitd[0].Length == 3 || splitd[0].Length == 2))   // mmm-yyyy or mm-yyyy
+                if (splitd.Length == 1)
                 {
-                    string mon = Utilities.Get_maand(splitd[0]);
-                    if (mon.StartsWith("Error")) return (mon);
-                    else
-                    {
-                        if (Utilities.CheckYear(splitd[1])) return (splitd[1] + "-" + mon);
-                        else return ("Error: Wrong Year in partial date");
-                    }
+                    String year = splitd[0];
+                    if (Utilities.CheckYear(year)) 
+                        return year;
+                    else 
+                        return ("Error: Wrong Year in partial date");
                 }
             }
             catch (Exception ex)
@@ -196,51 +209,51 @@ namespace OCDataImporter
                 case "JAN":
                 case "01":
                 case "1":
-                    return ("01");
+                    return ("Jan");
                 case "FEB":
                 case "02":
                 case "2":
-                    return ("02");
+                    return ("Feb");
                 case "MAR":
                 case "MRT":
                 case "03":
                 case "3":
-                    return ("03");
+                    return ("Mar");
                 case "APR":
                 case "04":
                 case "4":
-                    return ("04");
+                    return ("Apr");
                 case "MAY":
                 case "05":
                 case "MEI":
                 case "5":
-                    return ("05");
+                    return ("May");
                 case "JUN":
                 case "06":
                 case "6":
-                    return ("06");
+                    return ("Jun");
                 case "JUL":
                 case "07":
                 case "7":
-                    return ("07");
+                    return ("Jul");
                 case "AUG":
                 case "08":
                 case "8":
-                    return ("08");
+                    return ("Aug");
                 case "SEP":
                 case "09":
                 case "9":
-                    return ("09");
+                    return ("Sep");
                 case "OCT":
                 case "OKT":
                 case "10":
-                    return ("10");
+                    return ("Oct");
                 case "NOV":
                 case "11":
-                    return ("11");
+                    return ("Nov");
                 case "DEC":
                 case "12":
-                    return ("12");
+                    return ("Dec");
                 default:
                     return ("Error: month:" + inp + " not found");
             }

@@ -661,13 +661,13 @@ namespace OCDataImporter
         private string insertEventStatusAfterUpload(string xmlOutput)
         {            
             string ret = xmlOutput;
-            if (conversionSettings.useStatusAfterUpload) {
-                String statusAfterUpload = conversionSettings.statusAfterUpload.Equals(StatusAfterUpload.MARKED_COMPLETE) ? "Marked_Complete" : "initial data entry";
+            
+            String statusAfterUpload = conversionSettings.statusAfterUpload.Equals(StatusAfterUpload.MARKED_COMPLETE) ? "Marked_Complete" : "initial data entry";
                 
-                int positionTrailingChevron = xmlOutput.LastIndexOf('>');
-                ret = xmlOutput.Substring(0, positionTrailingChevron);
-                ret += " OpenClinica:Status=\"" + statusAfterUpload + "\">" + LINE_SEPARATOR; 
-            }
+            int positionTrailingChevron = xmlOutput.LastIndexOf('>');
+            ret = xmlOutput.Substring(0, positionTrailingChevron);
+            ret += " OpenClinica:Status=\"" + statusAfterUpload + "\">" + LINE_SEPARATOR; 
+            
             return ret;
         }
 

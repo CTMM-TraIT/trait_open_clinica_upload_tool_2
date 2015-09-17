@@ -35,8 +35,7 @@ namespace OCDataImporter
         public String pathToMetaDataFile { get; set; } 
 
         public bool useTodaysDateIfNoEventDate { get; set; }
-        public bool checkForDuplicateSubjects { get; set; }
-        public bool useStatusAfterUpload { get; set; }
+        public bool checkForDuplicateSubjects { get; set; }       
        
         public bool uploadOnNotStarted { get; set; }
         public bool uploadOnDataEntryStarted { get; set; }
@@ -56,8 +55,7 @@ namespace OCDataImporter
             workdir = "";
             pathToMetaDataFile = "";
             pathToInputFile = "";
-            checkForDuplicateSubjects = false;
-            useStatusAfterUpload = false;            
+            checkForDuplicateSubjects = false;        
         }
 
         public Boolean isUpsertOnRequested()

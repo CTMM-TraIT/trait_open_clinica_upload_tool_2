@@ -69,8 +69,6 @@
             this.cbUploadWhen_NotStarted = new System.Windows.Forms.CheckBox();
             this.rbStatusAfterUploadDataEntryStarted = new System.Windows.Forms.RadioButton();
             this.rbInitialDataBaseStatus_StillEmpty = new System.Windows.Forms.RadioButton();
-            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted = new System.Windows.Forms.RadioButton();
-            this.gbInitialStatusCRFs = new System.Windows.Forms.GroupBox();
             this.gbProgramParameters = new System.Windows.Forms.GroupBox();
             this.statusAfterUpload = new System.Windows.Forms.GroupBox();
             this.rbStatusAfterUploadMarkedComplete = new System.Windows.Forms.RadioButton();
@@ -90,18 +88,20 @@
             this.lbDefaultSex = new System.Windows.Forms.Label();
             this.cbDateFormat = new System.Windows.Forms.ComboBox();
             this.lbDateFormat = new System.Windows.Forms.Label();
+            this.gbInitialStatusCRFs = new System.Windows.Forms.GroupBox();
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted = new System.Windows.Forms.RadioButton();
+            this.gbUploadWhenCRFStatus = new System.Windows.Forms.GroupBox();
+            this.cbUploadWhen_DataEntryComplete = new System.Windows.Forms.CheckBox();
+            this.cbUploadWhen_DataEntryStarted = new System.Windows.Forms.CheckBox();
             this.gbInputFiles = new System.Windows.Forms.GroupBox();
             this.buttonExit = new System.Windows.Forms.Button();
-            this.cbUploadWhen_DataEntryStarted = new System.Windows.Forms.CheckBox();
-            this.cbUploadWhen_DataEntryComplete = new System.Windows.Forms.CheckBox();
-            this.gbUploadWhenCRFStatus = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.gbInitialStatusCRFs.SuspendLayout();
             this.gbProgramParameters.SuspendLayout();
             this.statusAfterUpload.SuspendLayout();
             this.gbStartDateEmpty.SuspendLayout();
-            this.gbInputFiles.SuspendLayout();
+            this.gbInitialStatusCRFs.SuspendLayout();
             this.gbUploadWhenCRFStatus.SuspendLayout();
+            this.gbInputFiles.SuspendLayout();
             this.SuspendLayout();
             // 
             // comboBoxSE
@@ -495,28 +495,6 @@
             this.rbInitialDataBaseStatus_StillEmpty.UseVisualStyleBackColor = true;
             this.rbInitialDataBaseStatus_StillEmpty.CheckedChanged += new System.EventHandler(this.rbOCDataBaseStatus_StillEmpty_CheckedChanged);
             // 
-            // rbInitialDataBaseStatus_DataEntryAllreadyStarted
-            // 
-            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.AutoSize = true;
-            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.Location = new System.Drawing.Point(7, 35);
-            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.Name = "rbInitialDataBaseStatus_DataEntryAllreadyStarted";
-            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.Size = new System.Drawing.Size(265, 17);
-            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.TabIndex = 14;
-            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.Text = "Data entry already started for these CRFs";
-            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.UseVisualStyleBackColor = true;
-            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.CheckedChanged += new System.EventHandler(this.rbOCDataBaseStatus_DataEntryAllreadyStarted_CheckedChanged);
-            // 
-            // gbInitialStatusCRFs
-            // 
-            this.gbInitialStatusCRFs.Controls.Add(this.rbInitialDataBaseStatus_StillEmpty);
-            this.gbInitialStatusCRFs.Controls.Add(this.rbInitialDataBaseStatus_DataEntryAllreadyStarted);
-            this.gbInitialStatusCRFs.Location = new System.Drawing.Point(18, 87);
-            this.gbInitialStatusCRFs.Name = "gbInitialStatusCRFs";
-            this.gbInitialStatusCRFs.Size = new System.Drawing.Size(349, 63);
-            this.gbInitialStatusCRFs.TabIndex = 114;
-            this.gbInitialStatusCRFs.TabStop = false;
-            this.gbInitialStatusCRFs.Text = "Status OpenClinica Database:";
-            // 
             // gbProgramParameters
             // 
             this.gbProgramParameters.Controls.Add(this.statusAfterUpload);
@@ -721,6 +699,61 @@
             this.lbDateFormat.TabIndex = 115;
             this.lbDateFormat.Text = "Date format in study items";
             // 
+            // gbInitialStatusCRFs
+            // 
+            this.gbInitialStatusCRFs.Controls.Add(this.rbInitialDataBaseStatus_StillEmpty);
+            this.gbInitialStatusCRFs.Controls.Add(this.rbInitialDataBaseStatus_DataEntryAllreadyStarted);
+            this.gbInitialStatusCRFs.Location = new System.Drawing.Point(18, 87);
+            this.gbInitialStatusCRFs.Name = "gbInitialStatusCRFs";
+            this.gbInitialStatusCRFs.Size = new System.Drawing.Size(349, 63);
+            this.gbInitialStatusCRFs.TabIndex = 114;
+            this.gbInitialStatusCRFs.TabStop = false;
+            this.gbInitialStatusCRFs.Text = "Status OpenClinica Database:";
+            // 
+            // rbInitialDataBaseStatus_DataEntryAllreadyStarted
+            // 
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.AutoSize = true;
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.Location = new System.Drawing.Point(7, 35);
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.Name = "rbInitialDataBaseStatus_DataEntryAllreadyStarted";
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.Size = new System.Drawing.Size(265, 17);
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.TabIndex = 14;
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.Text = "Data entry already started for these CRFs";
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.UseVisualStyleBackColor = true;
+            this.rbInitialDataBaseStatus_DataEntryAllreadyStarted.CheckedChanged += new System.EventHandler(this.rbOCDataBaseStatus_DataEntryAllreadyStarted_CheckedChanged);
+            // 
+            // gbUploadWhenCRFStatus
+            // 
+            this.gbUploadWhenCRFStatus.Controls.Add(this.cbUploadWhen_DataEntryComplete);
+            this.gbUploadWhenCRFStatus.Controls.Add(this.cbUploadWhen_NotStarted);
+            this.gbUploadWhenCRFStatus.Controls.Add(this.cbUploadWhen_DataEntryStarted);
+            this.gbUploadWhenCRFStatus.Location = new System.Drawing.Point(384, 84);
+            this.gbUploadWhenCRFStatus.Name = "gbUploadWhenCRFStatus";
+            this.gbUploadWhenCRFStatus.Size = new System.Drawing.Size(202, 88);
+            this.gbUploadWhenCRFStatus.TabIndex = 115;
+            this.gbUploadWhenCRFStatus.TabStop = false;
+            this.gbUploadWhenCRFStatus.Text = "  Upload if current CRF status  ";
+            // 
+            // cbUploadWhen_DataEntryComplete
+            // 
+            this.cbUploadWhen_DataEntryComplete.AutoSize = true;
+            this.cbUploadWhen_DataEntryComplete.Location = new System.Drawing.Point(6, 61);
+            this.cbUploadWhen_DataEntryComplete.Name = "cbUploadWhen_DataEntryComplete";
+            this.cbUploadWhen_DataEntryComplete.Size = new System.Drawing.Size(146, 17);
+            this.cbUploadWhen_DataEntryComplete.TabIndex = 14;
+            this.cbUploadWhen_DataEntryComplete.Text = "Data Entry Complete";
+            this.cbUploadWhen_DataEntryComplete.UseVisualStyleBackColor = true;
+            this.cbUploadWhen_DataEntryComplete.CheckedChanged += new System.EventHandler(this.warningStateChange);
+            // 
+            // cbUploadWhen_DataEntryStarted
+            // 
+            this.cbUploadWhen_DataEntryStarted.AutoSize = true;
+            this.cbUploadWhen_DataEntryStarted.Location = new System.Drawing.Point(6, 38);
+            this.cbUploadWhen_DataEntryStarted.Name = "cbUploadWhen_DataEntryStarted";
+            this.cbUploadWhen_DataEntryStarted.Size = new System.Drawing.Size(133, 17);
+            this.cbUploadWhen_DataEntryStarted.TabIndex = 16;
+            this.cbUploadWhen_DataEntryStarted.Text = "Data Entry Started";
+            this.cbUploadWhen_DataEntryStarted.UseVisualStyleBackColor = true;
+            // 
             // gbInputFiles
             // 
             this.gbInputFiles.Controls.Add(this.button_start);
@@ -736,6 +769,7 @@
             // 
             // buttonExit
             // 
+            this.buttonExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonExit.Location = new System.Drawing.Point(1140, 695);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(75, 23);
@@ -743,39 +777,6 @@
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
-            // 
-            // cbUploadWhen_DataEntryStarted
-            // 
-            this.cbUploadWhen_DataEntryStarted.AutoSize = true;
-            this.cbUploadWhen_DataEntryStarted.Location = new System.Drawing.Point(6, 38);
-            this.cbUploadWhen_DataEntryStarted.Name = "cbUploadWhen_DataEntryStarted";
-            this.cbUploadWhen_DataEntryStarted.Size = new System.Drawing.Size(133, 17);
-            this.cbUploadWhen_DataEntryStarted.TabIndex = 16;
-            this.cbUploadWhen_DataEntryStarted.Text = "Data Entry Started";
-            this.cbUploadWhen_DataEntryStarted.UseVisualStyleBackColor = true;
-            // 
-            // cbUploadWhen_DataEntryComplete
-            // 
-            this.cbUploadWhen_DataEntryComplete.AutoSize = true;
-            this.cbUploadWhen_DataEntryComplete.Location = new System.Drawing.Point(6, 61);
-            this.cbUploadWhen_DataEntryComplete.Name = "cbUploadWhen_DataEntryComplete";
-            this.cbUploadWhen_DataEntryComplete.Size = new System.Drawing.Size(146, 17);
-            this.cbUploadWhen_DataEntryComplete.TabIndex = 14;
-            this.cbUploadWhen_DataEntryComplete.Text = "Data Entry Complete";
-            this.cbUploadWhen_DataEntryComplete.UseVisualStyleBackColor = true;
-            this.cbUploadWhen_DataEntryComplete.CheckedChanged += new System.EventHandler(this.warningStateChange);
-            // 
-            // gbUploadWhenCRFStatus
-            // 
-            this.gbUploadWhenCRFStatus.Controls.Add(this.cbUploadWhen_DataEntryComplete);
-            this.gbUploadWhenCRFStatus.Controls.Add(this.cbUploadWhen_NotStarted);
-            this.gbUploadWhenCRFStatus.Controls.Add(this.cbUploadWhen_DataEntryStarted);
-            this.gbUploadWhenCRFStatus.Location = new System.Drawing.Point(384, 84);
-            this.gbUploadWhenCRFStatus.Name = "gbUploadWhenCRFStatus";
-            this.gbUploadWhenCRFStatus.Size = new System.Drawing.Size(202, 88);
-            this.gbUploadWhenCRFStatus.TabIndex = 115;
-            this.gbUploadWhenCRFStatus.TabStop = false;
-            this.gbUploadWhenCRFStatus.Text = "  Upload if current CRF status  ";
             // 
             // Form1
             // 
@@ -812,18 +813,18 @@
             this.Text = "OCDataImporter - Provided by VU Medical Center, dept. of Pathology, Amsterdam";
             this.toolTip1.SetToolTip(this, "asdfasdfasfsadfa");
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.gbInitialStatusCRFs.ResumeLayout(false);
-            this.gbInitialStatusCRFs.PerformLayout();
             this.gbProgramParameters.ResumeLayout(false);
             this.gbProgramParameters.PerformLayout();
             this.statusAfterUpload.ResumeLayout(false);
             this.statusAfterUpload.PerformLayout();
             this.gbStartDateEmpty.ResumeLayout(false);
             this.gbStartDateEmpty.PerformLayout();
-            this.gbInputFiles.ResumeLayout(false);
-            this.gbInputFiles.PerformLayout();
+            this.gbInitialStatusCRFs.ResumeLayout(false);
+            this.gbInitialStatusCRFs.PerformLayout();
             this.gbUploadWhenCRFStatus.ResumeLayout(false);
             this.gbUploadWhenCRFStatus.PerformLayout();
+            this.gbInputFiles.ResumeLayout(false);
+            this.gbInputFiles.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -603,6 +603,7 @@ namespace OCDataImporter
             }
             textBoxOutput.SelectionStart = textBoxOutput.Text.Length;
             textBoxOutput.ScrollToCaret();
+            conversionSettings.statusAfterUpload = StatusAfterUpload.DATA_ENTRY_STARTED;
         }       
 
         private void buttonStartConversion_Click_1(object sender, EventArgs e)
@@ -614,8 +615,7 @@ namespace OCDataImporter
                 return;
             }
             BuildRepeatingEventString();
-            BuildRepeatingGroupString();
-            initializeUserInterfaceElements();
+            BuildRepeatingGroupString();            
 
             // delete DataImport*.xml
             string[] txtList = Directory.GetFiles(conversionSettings.workdir, "DataImport_*.xml");
@@ -638,7 +638,9 @@ namespace OCDataImporter
             
             conversionSettings.uploadOnNotStarted = cbUploadWhen_NotStarted.Checked;
             conversionSettings.uploadOnDataEntryStarted = cbUploadWhen_DataEntryStarted.Checked;
-            conversionSettings.uploadOnDataEntryComplete = cbUploadWhen_DataEntryComplete.Checked;            
+            conversionSettings.uploadOnDataEntryComplete = cbUploadWhen_DataEntryComplete.Checked;
+
+            fillConversionSettings();
 
             dumpTheGrid();
             Converter converter = new Converter(conversionSettings, studyMetaDataValidator, warningLog, this, labelOCoidExists, LabelOID);
@@ -652,6 +654,7 @@ namespace OCDataImporter
             }
             String pathWarningLog = conversionSettings.workdir + "\\OCDataImporter_warnings.txt";
             warningLog.dumpToFile(pathWarningLog);
+            initializeUserInterfaceElements();
             resetUserInterfaceElements(converter);
         }
 
@@ -1564,6 +1567,11 @@ namespace OCDataImporter
 
         private void onClickDataEntryStartedStatus(object sender, EventArgs e)
         {
+            fillConversionSettings();
+        }
+
+        private void fillConversionSettings()
+        {
             if (rbStatusAfterUploadDataEntryStarted.Checked)
             {
                 conversionSettings.statusAfterUpload = StatusAfterUpload.DATA_ENTRY_STARTED;
@@ -1576,6 +1584,7 @@ namespace OCDataImporter
                 }
             }
         }
+
 
         private void enableOCDataBaseStatus(Boolean enabled)
         {            
